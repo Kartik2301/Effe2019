@@ -1,0 +1,57 @@
+<RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+<com.gauravk.bubblenavigation.BubbleNavigationLinearView
+    android:id="@+id/bottom_navigation_view_linear"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#fff"
+    android:elevation="8dp"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/l_item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_active="true"
+        app:bt_title="home"
+        app:bt_padding="16dp"
+        app:bt_titlePadding="16dp"/>
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/l2_item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_active="true"
+        app:bt_icon="@drawable/ic_action_event"
+        app:bt_title="events"
+        app:bt_padding="16dp"
+        app:bt_titlePadding="16dp" />
+
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/l4_item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_active="true"
+        app:bt_icon="@drawable/ic_action_info"
+        app:bt_title="info"
+        app:bt_padding="16dp"
+        app:bt_titlePadding="16dp" />
+</com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+
+    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:layout="@layout/fragment_home" />
+    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container1"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:layout="@layout/fragment_event" />
+    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container2"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:layout="@layout/fragment_info" />
+
+
+</RelativeLayout>
