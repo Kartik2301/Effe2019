@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView android:layout_height="wrap_content"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="#FFFDE7"
+    android:layout_margin="10dp"
+    android:elevation="10dp">
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:padding="5dp" android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profile_img"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:src="@drawable/ned"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/profile_name"
+            android:layout_marginTop="10dp"
+            android:layout_toRightOf="@id/profile_img"
+            android:text="Eddard Stark"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/designation"
+            android:layout_marginTop="10dp"
+            android:layout_alignLeft="@id/profile_name"
+            android:layout_below="@id/profile_name"
+            android:text="Lord of Winterfell"
+            android:textSize="16sp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:src="@drawable/github"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

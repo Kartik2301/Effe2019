@@ -5,7 +5,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="80dp"
     android:background="#fff"
     android:elevation="8dp"
     android:orientation="horizontal"
@@ -43,15 +43,18 @@
     <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
         android:layout_width="match_parent" android:layout_height="match_parent"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home"
+        android:layout_marginTop="100dp"/>
     <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_marginTop="100dp"
         xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container1"
         android:layout_width="match_parent" android:layout_height="match_parent"
         tools:layout="@layout/fragment_event" />
     <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container2"
         android:layout_width="match_parent" android:layout_height="match_parent"
-        tools:layout="@layout/fragment_info" />
+        tools:layout="@layout/fragment_info"
+        android:layout_marginTop="80dp"/>
 
 
 </RelativeLayout>

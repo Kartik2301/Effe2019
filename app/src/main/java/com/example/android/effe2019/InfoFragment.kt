@@ -5,17 +5,35 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.viewpager.widget.ViewPager
+
+import com.google.android.material.tabs.TabLayout
 
 class InfoFragment : Fragment() {
+    private var adapter: TabAdapter? = null
+    private var tabLayout: TabLayout? = null
+    private var viewPager: ViewPager? = null
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        // Add this line in order for this fragment to handle menu events.
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-
-        //Inflate the layout for this fragment
-
-        return inflater.inflate(
-            R.layout.fragment_info, container, false
-        )
+        val rootView = inflater.inflate(R.layout.fragment_info, container, false)
+        viewPager = rootView.findViewById<View>(R.id.viewPager) as ViewPager
+        tabLayout = rootView.findViewById<View>(R.id.tabLayout) as TabLayout
+        adapter = TabAdapter(fragmentManager!!)
+        adapter!!.addFragment(Tab1Fragment(), "Team")
+        adapter!!.addFragment(Tab2Fragment(), "Devs")
+        adapter!!.addFragment(Tab3Fragment(), "Sponsors")
+        adapter!!.addFragment(Tab3Fragment(), "About")
+        viewPager!!.adapter = adapter
+        tabLayout!!.setupWithViewPager(viewPager)
+        return rootView
     }
 }
