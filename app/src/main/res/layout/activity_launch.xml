@@ -29,6 +29,7 @@
         app:bt_padding="16dp"
         app:bt_titlePadding="16dp" />
 
+
     <com.gauravk.bubblenavigation.BubbleToggleView
         android:id="@+id/l4_item_home"
         android:layout_width="wrap_content"
@@ -38,6 +39,15 @@
         app:bt_title="info"
         app:bt_padding="16dp"
         app:bt_titlePadding="16dp" />
+    <com.gauravk.bubblenavigation.BubbleToggleView
+        android:id="@+id/l5_item_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:bt_active="true"
+        app:bt_icon="@drawable/ic_action_proshows"
+        app:bt_title="Pro Shows"
+        app:bt_padding="10dp"
+        app:bt_titlePadding="0dp" />
 </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
 
     <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"

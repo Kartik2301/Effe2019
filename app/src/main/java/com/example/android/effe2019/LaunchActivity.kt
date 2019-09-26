@@ -1,8 +1,8 @@
 package com.example.android.effe2019
 
-
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.ActionBar
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
@@ -13,6 +13,11 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
+        val actionBar: ActionBar
+        actionBar = this!!.supportActionBar!!
+        actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mygradient))
+        getActionBar()?.setTitle("My Effe");
+        getSupportActionBar()?.setTitle("My Effe");
         val bubbleNavigationLinearView =
             findViewById<View>(R.id.bottom_navigation_view_linear) as BubbleNavigationLinearView
         bubbleNavigationLinearView.setNavigationChangeListener { view, position ->
@@ -23,8 +28,11 @@ class LaunchActivity : AppCompatActivity() {
                 else if(position == 1) {
                     fr = EventFragment()
                 }
-                else  { // Note the block
+                else if(position ==2){
                     fr = InfoFragment()
+                }
+                else  { // Note the block
+                    fr = ProshowsFragment()
                 }
             val fm = supportFragmentManager
             val fragmentTransaction = fm.beginTransaction()

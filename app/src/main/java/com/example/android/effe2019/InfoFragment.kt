@@ -31,7 +31,7 @@ class InfoFragment : Fragment() {
         adapter!!.addFragment(Tab1Fragment(), "Team")
         adapter!!.addFragment(Tab2Fragment(), "Devs")
         adapter!!.addFragment(Tab3Fragment(), "Sponsors")
-        adapter!!.addFragment(Tab3Fragment(), "About")
+        adapter!!.addFragment(Tab4Fragment(), "About")
         viewPager!!.adapter = adapter
         tabLayout!!.setupWithViewPager(viewPager)
         return rootView

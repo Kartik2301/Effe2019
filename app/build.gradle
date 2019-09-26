@@ -51,6 +51,8 @@ dependencies {
     implementation 'com.ramotion.garlandview:garland-view:0.3.3'
     implementation 'com.gauravk.bubblenavigation:bubblenavigation:1.0.7'
     implementation 'de.hdodenhof:circleimageview:3.0.1'
+    implementation 'com.github.amyu:StackCardLayoutManager:1.0'
+    implementation 'com.github.IslamKhSh:CardSlider:0.4'
 
 }
 apply plugin: 'com.google.gms.google-services'
