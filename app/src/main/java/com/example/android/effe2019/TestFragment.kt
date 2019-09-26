@@ -4,41 +4,63 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+
 import androidx.fragment.app.Fragment
+
 import com.ramotion.garlandview.TailLayoutManager
 import com.ramotion.garlandview.TailRecyclerView
 import com.ramotion.garlandview.TailSnapHelper
 import com.ramotion.garlandview.header.HeaderTransformer
+
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+
+import java.util.ArrayList
+
 import io.reactivex.Single
 import io.reactivex.SingleEmitter
 import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
-import org.greenrobot.eventbus.EventBus
-import org.greenrobot.eventbus.Subscribe
-import java.util.ArrayList
 
-class EventFragment : Fragment() {
-    private val OUTER_COUNT = 2
-    private val INNER_COUNT = 1
-    private lateinit var rootView: View
+class TestFragment : Fragment() {
+
+    internal lateinit var rootView: View
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?, savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-
-        //Inflate the layout for this fragment
-
+        // Inflate the layout for this fragment
         rootView = inflater.inflate(R.layout.fragment_event, container, false)
+        return rootView
+    }
+
+    override fun onStart() {
+        super.onStart()
+        onFakerReady()
+        EventBus.getDefault().register(this)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
+
+
+    fun onFakerReady() {
         Single.create(SingleOnSubscribe<List<List<InnerData>>> { e ->
             val outerData = ArrayList<List<InnerData>>()
             var i = 0
-            while (i < OUTER_COUNT && !e.isDisposed) {
+            while (i < 2 && !e.isDisposed) {
                 val innerData = ArrayList<InnerData>()
                 var j = 0
-                while (j < INNER_COUNT && !e.isDisposed) {
+                while (j < 4 && !e.isDisposed) {
                     innerData.add(createInnerData())
                     j++
                 }
@@ -53,30 +75,17 @@ class EventFragment : Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { outerData -> initRecyclerView(outerData) }
-        return rootView
-    }
-    @Subscribe
-    override fun onStart() {
-        super.onStart()
-        onFakerReady()
-        EventBus.getDefault().register(activity)
-    }
-    override fun onStop() {
-        super.onStop()
-        EventBus.getDefault().unregister(activity)
-    }
-    fun onFakerReady() {
-
     }
 
     private fun initRecyclerView(data: List<List<InnerData>>) {
 
-        val rv = rootView.findViewById(R.id.recycler_view) as TailRecyclerView
+        val rv = rootView.findViewById<View>(R.id.recycler_view) as TailRecyclerView
         (rv.layoutManager as TailLayoutManager).setPageTransformer(HeaderTransformer())
         rv.adapter = OuterAdapter(data)
 
         TailSnapHelper().attachToRecyclerView(rv)
     }
+
     private fun createInnerData(): InnerData {
         return InnerData(
             "bhjjbh",
@@ -87,4 +96,14 @@ class EventFragment : Fragment() {
         )
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun OnInnerItemClick(item: InnerItem) {
+        val itemData = item.itemData ?: return
+//
+        //        DetailsActivity.start(this,
+        //                item.getItemData().name, item.mAddress.getText().toString(),
+        //                item.getItemData().avatarUrl, item.itemView, item.mAvatarBorder);
+    }
+
 }
+

@@ -26,7 +26,7 @@ class LaunchActivity : AppCompatActivity() {
                     fr = HomeFragment()
                 }
                 else if(position == 1) {
-                    fr = EventFragment()
+                    fr = TestFragment()
                 }
                 else if(position ==2){
                     fr = InfoFragment()

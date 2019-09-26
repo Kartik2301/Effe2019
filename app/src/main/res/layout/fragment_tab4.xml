@@ -18,7 +18,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
         android:fontFamily="casual"
-        android:text="EFFERVESCENCE (fondly nicknamed EFFE ) is the annual cultural festival of IIIT Allahabad and it's the second largest college fest in Uttar Pradesh and well renowned in India. Generally held in October, it attracts national as well as internation participation in its multiple events during the fest. It is committed to creating an unforgettable experience for all its visitors, along with providing people from different areas a chance to showcase their talents, explore their hidden potential and win gigantic cash prizes in a very competitive yet learning environment"
+        android:text="EFFERVESCENCE (fondly nicknamed EFFE ) is the annual cultural festival of IIIT Allahabad and it's the second largest college fest in Uttar Pradesh and well renowned in India. Generally held in October, it attracts national as well as international participation in its multiple events during the fest. It is committed to creating an unforgettable experience for all its visitors, along with providing people from different areas a chance to showcase their talents, explore their hidden potential and win gigantic cash prizes in a very competitive yet learning environment"
         />
     <TextView
         android:layout_width="wrap_content"
