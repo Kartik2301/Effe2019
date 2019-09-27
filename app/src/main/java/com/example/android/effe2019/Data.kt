@@ -1,24 +1,25 @@
 package com.example.android.effe2019
 
 class Data {
-    var title: String? = null
-    var note: String? = null
-    var date: String? = null
-    private var id: String? = null
-
+    var name: String? = null
+    var github: String? = null
+    var designation: String? = null
     constructor() {}
-    constructor(id: String, title: String, note: String, date: String) {
-        this.id = id
-        this.title = title
-        this.note = note
-        this.date = date
+    constructor(name: String, github:String, designation: String) {
+        this.name = name
+        this.github = github
+        this.designation = designation
     }
 
-    fun getid(): String? {
-        return id
+    fun getNameofDev(): String? {
+        return name
     }
 
-    fun setId(id: String) {
-        this.id = id
+    fun getGithubDev(): String? {
+        return github
     }
+    fun getDesignationDev(): String? {
+        return designation
+    }
+
 }

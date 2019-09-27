@@ -9,19 +9,19 @@ import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.ListView
 import androidx.fragment.app.Fragment
+import com.google.firebase.database.*
 
 import java.util.ArrayList
 
 class HomeFragment : Fragment() {
-    private val mForecastAdapter: ArrayAdapter<String>? = null
+    val TAG: String = "0"
     private var listViewUsers: ListView? = null
-    private val title: EditText? = null
-    private val note: EditText? = null
-
-   // internal lateinit var Users: List<Data>
+    internal lateinit var Users: MutableList<DataforHome>
+    private var databaseReference: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Add this line in order for this fragment to handle menu events.
+
         setHasOptionsMenu(true)
     }
 
@@ -31,11 +31,39 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
-       /* Users = ArrayList()
-        listViewUsers = rootView.findViewById<View>(R.id.list) as ListView
-        // list item click listener
-        listViewUsers!!.onItemClickListener =
-            AdapterView.OnItemClickListener { adapterView, view, i, l -> val User = Users[i] }*/
+
+        Users = ArrayList()
+        databaseReference = FirebaseDatabase.getInstance().getReference("updates")
+        listViewUsers = rootView.findViewById(R.id.list) as ListView
+// list item click listener
+        listViewUsers!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
+            val User = Users[i]
+        })
+
         return rootView
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        on()
+    }
+     fun on() {
+        databaseReference?.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                Users.clear()
+                for (postSnapshot in dataSnapshot.children) {
+                    val User = postSnapshot.getValue(DataforHome::class.java)
+                    if (User != null) {
+                        Users.add(User)
+                    }
+                }
+                val UserAdapter = HomeAdapter(activity, Users)
+                listViewUsers?.setAdapter(UserAdapter)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+
+            }
+        })
     }
 }

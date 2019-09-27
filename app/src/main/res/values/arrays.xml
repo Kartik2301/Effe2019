@@ -22,6 +22,9 @@
         <item>Mission impossible</item>
         <item>Pirates of the Caribbean</item>
     </string-array>
+    <integer-array name="images">
+        <item>@drawable/icon</item>
+    </integer-array>
 
     <string-array name="overviews">
         <item>An orphaned boy enrolls in a school of wizardry, where he learns the truth about himself, his family and the terrible evil that haunts the magical world.</item>

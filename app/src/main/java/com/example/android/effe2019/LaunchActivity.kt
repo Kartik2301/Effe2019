@@ -8,6 +8,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView
+import android.R.attr.fragment
+import androidx.core.app.ComponentActivity.ExtraData
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+
 
 class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,11 +23,21 @@ class LaunchActivity : AppCompatActivity() {
         actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mygradient))
         getActionBar()?.setTitle("My Effe");
         getSupportActionBar()?.setTitle("My Effe");
+//        val obj : HomeFragment = HomeFragment()
+//        obj.on();
+        var fr: Fragment
+
+        fr = HomeFragment()
+        val fm = supportFragmentManager
+        val fragmentTransaction = fm.beginTransaction()
+        val replace = fragmentTransaction.replace(R.id.container2, fr)
+        fragmentTransaction.commit()
         val bubbleNavigationLinearView =
             findViewById<View>(R.id.bottom_navigation_view_linear) as BubbleNavigationLinearView
         bubbleNavigationLinearView.setNavigationChangeListener { view, position ->
-            val fr: Fragment
+
                 if (position == 0) {
+
                     fr = HomeFragment()
                 }
                 else if(position == 1) {
@@ -39,5 +54,10 @@ class LaunchActivity : AppCompatActivity() {
             val replace = fragmentTransaction.replace(R.id.container2, fr)
             fragmentTransaction.commit()
         }
+    }
+
+    override fun onStart() {
+        super.onStart()
+
     }
 }
