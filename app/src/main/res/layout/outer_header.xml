@@ -10,7 +10,7 @@
         <View
             android:id="@+id/header_middle"
             android:layout_width="0dp"
-            android:layout_height="120dp"
+            android:layout_height="150dp"
             android:background="@drawable/green_corners_top"
             android:layout_marginLeft="0dp"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -23,14 +23,10 @@
         <TextView
             android:id="@+id/header_text_1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:gravity="start"
-            android:ellipsize="end"
-            android:maxLines="1"
+            android:layout_height="0dp"
             android:textSize="@dimen/header_title1_text_size"
             android:textColor="@android:color/white"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
             android:layout_marginRight="16dp"
             app:layout_constraintLeft_toLeftOf="@+id/header_middle"
             app:layout_constraintTop_toTopOf="@+id/header_middle"
@@ -44,37 +40,36 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:alpha="0"
+            android:gravity="center_vertical"
+            app:layout_constraintVertical_bias="0.5"
+            android:layout_marginTop="45dp"
             android:textColor="@android:color/white"
-            android:layout_marginTop="16dp"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
+            android:textAlignment="center"
             app:layout_constraintTop_toTopOf="@+id/header_middle"
             app:layout_constraintLeft_toLeftOf="@+id/header_middle"
             app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintHorizontal_bias="0.5"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp" />
 
         <FrameLayout
             android:id="@+id/avatar_border"
-            android:layout_width="@dimen/header_avatar_size"
-            android:layout_height="@dimen/header_avatar_size"
-            android:background="@drawable/avatar_border_header"
-            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
             app:layout_constraintTop_toTopOf="@+id/header_middle"
-            android:layout_marginLeft="16dp"
             app:layout_constraintLeft_toLeftOf="@+id/header_middle"
-            android:layout_marginStart="16dp"
             app:layout_constraintBottom_toBottomOf="@+id/header_footer"
-            android:layout_marginBottom="8dp">
+            >
 
             <ImageView
                 android:id="@+id/avatar"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
+                android:src="@drawable/icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:layout_margin="@dimen/item_avatar_border"/>
+                />
 
         </FrameLayout>
 
@@ -98,7 +93,7 @@
                 android:textSize="@dimen/header_name_text_size"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:alpha="0.8"
+                android:alpha="0"
                 android:textColor="@android:color/white"/>
 
             <TextView
@@ -108,7 +103,7 @@
                 android:textSize="@dimen/header_info_text_size"
                 android:maxLines="1"
                 android:ellipsize="end"
-                android:alpha="0.5"
+                android:alpha="0"
                 android:textColor="@android:color/white"/>
 
         </LinearLayout>
@@ -117,7 +112,7 @@
             android:id="@+id/header_middle_answer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/answer"
+            android:text=""
             android:textColor="@android:color/white"
             android:textSize="@dimen/header_footer_text_size"
             android:layout_marginLeft="16dp"
@@ -130,7 +125,7 @@
         <FrameLayout
             android:id="@+id/header_footer"
             android:layout_width="0dp"
-            android:layout_height="50dp"
+            android:layout_height="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginRight="0dp"
             android:layout_marginTop="0dp"
@@ -139,14 +134,14 @@
             app:layout_constraintRight_toRightOf="@+id/header_middle"
             app:layout_constraintTop_toBottomOf="@+id/header_middle">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginStart="16dp"
-                android:text="@string/answer"
-                android:textColor="@color/header_green"
-                android:textSize="@dimen/header_footer_text_size" />
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="center_vertical"-->
+<!--                android:layout_marginStart="16dp"-->
+<!--                android:text="@string/answer"-->
+<!--                android:textColor="@color/header_green"-->
+<!--                android:textSize="@dimen/header_footer_text_size" />-->
 
             <ImageView
                 android:layout_width="@dimen/item_icon_size"

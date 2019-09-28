@@ -16,7 +16,6 @@ class InnerItem(itemView: View) : com.ramotion.garlandview.inner.InnerItem(itemV
     val mAddress: TextView
     val mAvatar: ImageView
     val mAvatarBorder: View
-    val mLine: View
 
     var itemData: InnerData? = null
         private set
@@ -29,7 +28,6 @@ class InnerItem(itemView: View) : com.ramotion.garlandview.inner.InnerItem(itemV
         mAddress = itemView.findViewById(R.id.tv_address) as TextView
         mAvatar = itemView.findViewById(R.id.avatar) as ImageView
         mAvatarBorder = itemView.findViewById(R.id.avatar_border)
-        mLine = itemView.findViewById(R.id.line)
 
         mInnerLayout.setOnClickListener { EventBus.getDefault().post(this@InnerItem) }
     }
@@ -48,14 +46,13 @@ class InnerItem(itemView: View) : com.ramotion.garlandview.inner.InnerItem(itemV
 
         mHeader.text = data.title
         mName.text =
-            String.format("%s %s", data.name, itemView.context.getString(R.string.answer_low))
-        mAddress.text = String.format(
-            "%s %s · %s",
-            data.age, mAddress.context.getString(R.string.years), data.address
-        )
+            data.Time+", "+data.date
+        mAddress.text =
+            data.Location
+
 
         GlideApp.with(itemView.context)
-            .load(data.avatarUrl)
+            .load(data.Url)
             .placeholder(R.drawable.avatar_placeholder)
             .transform(CircleCrop())
             .into(mAvatar)

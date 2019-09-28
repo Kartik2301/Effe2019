@@ -28,6 +28,7 @@
     <TextView
         android:text="Cultural Fest Of IIITA"
         android:layout_width="wrap_content"
+        android:maxWidth="200dp"
         android:layout_height="wrap_content"
         android:id="@+id/role"
         android:maxLines="3"
@@ -40,7 +41,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
     <ImageView
-        android:text="Cultural Fest Of IIITA"
         android:layout_width="70dp"
         android:scaleType="fitXY"
         android:layout_height="70dp"

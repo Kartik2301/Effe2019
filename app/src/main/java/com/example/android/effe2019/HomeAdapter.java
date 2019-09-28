@@ -42,11 +42,11 @@ public class HomeAdapter extends ArrayAdapter {
         TextView date = (TextView) convertView.findViewById(R.id.date);
         TextView desc = (TextView) convertView.findViewById(R.id.desc);
         final DataforHome task = (DataforHome) getItem(position);
-        //long timeStamp = task.getTimeStampofEvent();
+       long timeStamp = task.getTimeStampofEvent();
 
         title.setText(task.getTitle());
         desc.setText(task.getDesciprionofEvent());
-        //date.setText(convertTime(timeStamp));
+       date.setText(convertTime(timeStamp));
 
         return convertView;
     }

@@ -1,10 +1,13 @@
 package com.example.android.effe2019
 
 class InnerData(
+    val Orgaizser: String,
     val title: String,
-    val name: String,
-    val address: String,
-    val avatarUrl: String,
-    val age: Int
+    val Location: String,
+    val Time: String,
+    val description: String,
+    val Url: String,
+    val ParentUrl: String,
+    val date: String
 )
 

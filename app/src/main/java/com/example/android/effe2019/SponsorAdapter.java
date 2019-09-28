@@ -14,6 +14,8 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+
 import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.util.Arrays;
@@ -48,8 +50,11 @@ public class SponsorAdapter extends ArrayAdapter {
         }
         char ch = ',';
         role.setText(str);
-        new DownloadImageTask(imageView)
-        .execute(task.getUrlofSponsor());
+        Glide.with(imageView.getContext())
+                .load(task.getUrlofSponsor())
+                .into(imageView);
+        /*new DownloadImageTask(imageView)
+        .execute(task.getUrlofSponsor());*/
         return convertView;
     }
     private class DownloadImageTask extends AsyncTask<String, Void, Bitmap> {

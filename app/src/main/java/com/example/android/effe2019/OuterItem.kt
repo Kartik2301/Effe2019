@@ -120,16 +120,14 @@ class OuterItem(itemView: View, pool: RecyclerView.RecycledViewPool) : HeaderIte
 
         mRecyclerView.layoutManager = InnerLayoutManager()
         (mRecyclerView.adapter as InnerAdapter).addData(tail)
-
         GlideApp.with(context)
-            .load(header.avatarUrl)
+            .load(header.ParentUrl)
             .placeholder(R.drawable.avatar_placeholder)
-            .transform(CircleCrop())
             .into(mAvatar)
 
-        val title1 = header.title + "?"
+        val title1 = header.Orgaizser + "?"
 
-        val title2 = SpannableString(header.title + "? - " + header.name)
+        val title2 = SpannableString("  "+header.Orgaizser+"  ")
         title2.setSpan(AbsoluteSizeSpan(mTitleSize1), 0, title1.length, SPAN_INCLUSIVE_INCLUSIVE)
         title2.setSpan(
             AbsoluteSizeSpan(mTitleSize2),
@@ -147,12 +145,12 @@ class OuterItem(itemView: View, pool: RecyclerView.RecycledViewPool) : HeaderIte
         mHeaderCaption1.text = title1
         mHeaderCaption2.text = title2
 
-        mName.text = String.format("%s %s", header.name, context.getString(R.string.asked))
+        mName.text = String.format("%s %s", header.title, context.getString(R.string.asked))
         mInfo.text = String.format(
             "%s %s · %s",
-            header.age,
+            header.date,
             context.getString(R.string.years),
-            header.address
+            header.Location
         )
     }
 
