@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.text.trimmedLength
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager
 
@@ -16,7 +17,6 @@ class InfoFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Add this line in order for this fragment to handle menu events.
     }
 
     override fun onCreateView(
@@ -29,7 +29,7 @@ class InfoFragment : Fragment() {
         tabLayout = rootView.findViewById<View>(R.id.tabLayout) as TabLayout
         adapter = TabAdapter(fragmentManager!!)
         adapter!!.addFragment(Tab1Fragment(), "Team")
-        adapter!!.addFragment(Tab2Fragment(), "Devs")
+        adapter!!.addFragment(Tab2Fragment(), "Developers")
         adapter!!.addFragment(Tab3Fragment(), "Sponsors")
         adapter!!.addFragment(Tab4Fragment(), "About")
         viewPager!!.adapter = adapter

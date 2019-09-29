@@ -23,9 +23,9 @@ class ProshowsFragment : Fragment() {
 //        for (i in resources.getStringArray(R.array.titles).indices) {
 //            movies.add(
 //                ProShow(
-////                    posters.getResourceId(i, -1),
-////                    resources.getStringArray(R.array.titles)[i],
-////                    resources.getStringArray(R.array.overviews)[i]
+//                  posters.getResourceId(i, -1),
+//                    resources.getStringArray(R.array.titles)[i],
+//                    resources.getStringArray(R.array.overviews)[i]
 //                R.drawable.icon,"hello","bye"
 //                )
 //            )
@@ -61,8 +61,9 @@ class ProshowsFragment : Fragment() {
                 ProShow(
                    posters.getResourceId(i, -1),
                    resources.getStringArray(R.array.titles)[i],
-                   resources.getStringArray(R.array.overviews)[i]
-                )
+                   resources.getStringArray(R.array.overviews)[i],
+                    resources.getStringArray(R.array.date)[i]
+                    )
             )
         }
         posters.recycle()

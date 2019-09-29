@@ -12,6 +12,7 @@ import android.R.attr.fragment
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import androidx.fragment.app.FragmentTransaction
 
 
 class LaunchActivity : AppCompatActivity() {
@@ -29,28 +30,27 @@ class LaunchActivity : AppCompatActivity() {
 
         fr = HomeFragment()
         val fm = supportFragmentManager
-        val fragmentTransaction = fm.beginTransaction()
-        val replace = fragmentTransaction.replace(R.id.container2, fr)
+        var fragmentTransaction = fm.beginTransaction()
+        var replace = fragmentTransaction.replace(R.id.container2, fr)
         fragmentTransaction.commit()
         val bubbleNavigationLinearView =
             findViewById<View>(R.id.bottom_navigation_view_linear) as BubbleNavigationLinearView
         bubbleNavigationLinearView.setNavigationChangeListener { view, position ->
 
-                if (position == 0) {
+            if (position == 0) {
 
-                    fr = HomeFragment()
-                }
-                else if(position == 1) {
-                    fr = TestFragment()
-                }
-                else if(position ==2){
-                    fr = InfoFragment()
-                }
-                else  { // Note the block
-                    fr = ProshowsFragment()
-                }
+                fr = HomeFragment()
+
+            } else if (position == 1) {
+                fr = TestFragment()
+            } else if (position == 2) {
+                fr = InfoFragment()
+            } else { // Note the block
+                fr = ProshowsFragment()
+            }
             val fm = supportFragmentManager
             val fragmentTransaction = fm.beginTransaction()
+            fragmentTransaction.addToBackStack(null)
             val replace = fragmentTransaction.replace(R.id.container2, fr)
             fragmentTransaction.commit()
         }

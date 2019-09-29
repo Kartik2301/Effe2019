@@ -112,11 +112,12 @@ class TestFragment : Fragment() {
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun OnInnerItemClick(item: InnerItem) {
         val itemData = item.itemData ?: return
-//
-        //        DetailsActivity.start(this,
-        //                item.getItemData().name, item.mAddress.getText().toString(),
-        //                item.getItemData().avatarUrl, item.itemView, item.mAvatarBorder);
-    }
 
-}
+        /*DetailsActivity.start(
+            activity as LaunchActivity,
+            item.itemData!!.title, item.mAddress.text.toString(),
+            item.itemData!!.Url, item.itemView, item.mAvatarBorder
+        )*/
+    }
+    }
 
