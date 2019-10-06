@@ -1,71 +1,92 @@
-<RelativeLayout android:layout_height="match_parent" android:layout_width="match_parent"
-    xmlns:android="http://schemas.android.com/apk/res/android">
-<com.gauravk.bubblenavigation.BubbleNavigationLinearView
-    android:id="@+id/bottom_navigation_view_linear"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="80dp"
-    android:background="#fff"
-    android:elevation="8dp"
-    android:orientation="horizontal"
-    android:padding="12dp">
+    android:layout_height="match_parent">
 
-    <com.gauravk.bubblenavigation.BubbleToggleView
-        android:id="@+id/l_item_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:bt_active="true"
-        app:bt_title="home"
-        app:bt_padding="16dp"
-        app:bt_titlePadding="8dp"/>
-    <com.gauravk.bubblenavigation.BubbleToggleView
-        android:id="@+id/l2_item_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:bt_active="true"
-        app:bt_icon="@drawable/ic_action_event"
-        app:bt_title="events"
-        app:bt_padding="16dp"
-        app:bt_titlePadding="8dp" />
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_view_linear"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
-
-    <com.gauravk.bubblenavigation.BubbleToggleView
-        android:id="@+id/l4_item_home"
-        android:layout_width="wrap_content"
+    <com.gauravk.bubblenavigation.BubbleNavigationLinearView
+        android:id="@+id/bottom_navigation_view_linear"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:bt_active="true"
-        app:bt_icon="@drawable/ic_action_info"
-        app:bt_title="info"
-        app:bt_padding="16dp"
-        app:bt_titlePadding="8dp" />
-    <com.gauravk.bubblenavigation.BubbleToggleView
-        android:id="@+id/l5_item_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:bt_active="true"
-        app:bt_icon="@drawable/ic_action_proshows"
-        app:bt_title="Pro Shows"
-        app:bt_padding="16dp"
-        app:bt_titlePadding="8dp" />
-</com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+        android:background="@color/white"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_active="true"
+            app:bt_colorActive="@color/red_active"
+            app:bt_colorInactive="@color/red_inactive"
+            app:bt_shape="@drawable/transition_background_drawable_home"
+            app:bt_title="Home" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l2_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/blue_active"
+            app:bt_colorInactive="@color/blue_inactive"
+            app:bt_icon="@drawable/ic_action_event"
+            app:bt_shape="@drawable/transition_background_drawable_search"
+            app:bt_title="Events" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l4_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/purple_active"
+            app:bt_colorInactive="@color/purple_inactive"
+            app:bt_icon="@drawable/ic_action_info"
+            app:bt_shape="@drawable/transition_background_drawable_person"
+            app:bt_title="Info" />
+
+        <com.gauravk.bubblenavigation.BubbleToggleView
+            android:id="@+id/l5_item_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:bt_colorActive="@color/green_active"
+            app:bt_colorInactive="@color/green_inactive"
+            app:bt_icon="@drawable/ic_action_proshows"
+            app:bt_shape="@drawable/transition_background_drawable_list"
+            app:bt_title="Pro Shows" />
+
+    </com.gauravk.bubblenavigation.BubbleNavigationLinearView>
+
+    <androidx.fragment.app.FragmentTabHost
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:tag="unique_tag"
-        tools:layout="@layout/fragment_home"
-        android:layout_marginTop="100dp"/>
-    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_marginTop="100dp"
-        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container1"
-        android:layout_width="match_parent" android:layout_height="match_parent"
+        tools:layout="@layout/fragment_home"/>
+
+    <androidx.fragment.app.FragmentTabHost
+        android:id="@+id/container1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         tools:layout="@layout/fragment_event" />
-    <androidx.fragment.app.FragmentTabHost xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container2"
-        android:layout_width="match_parent" android:layout_height="match_parent"
-        tools:layout="@layout/fragment_info"
-        android:layout_marginTop="80dp"/>
 
+    <androidx.fragment.app.FragmentTabHost
+        android:id="@+id/container2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_info"/>
 
-</RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
