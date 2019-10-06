@@ -19,11 +19,11 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
-        val actionBar: ActionBar
-        actionBar = this!!.supportActionBar!!
-        actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mygradient))
-        getActionBar()?.setTitle("My Effe");
-        getSupportActionBar()?.setTitle("My Effe");
+//        val actionBar: ActionBar
+//        actionBar = this!!.supportActionBar!!
+//        actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mygradient))
+//        getActionBar()?.setTitle("My Effe");
+//        getSupportActionBar()?.setTitle("My Effe");
 //        val obj : HomeFragment = HomeFragment()
 //        obj.on();
         var fr: Fragment

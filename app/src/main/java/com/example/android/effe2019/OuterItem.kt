@@ -11,7 +11,6 @@ import android.widget.TextView
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.ramotion.garlandview.header.HeaderDecorator
 import com.ramotion.garlandview.header.HeaderItem
 import com.ramotion.garlandview.inner.InnerLayoutManager
@@ -60,8 +59,8 @@ class OuterItem(itemView: View, pool: RecyclerView.RecycledViewPool) : HeaderIte
 
         mHeaderCaption1 = itemView.findViewById(R.id.header_text_1) as TextView
         mHeaderCaption2 = itemView.findViewById(R.id.header_text_2) as TextView
-        mName = itemView.findViewById(R.id.tv_name) as TextView
-        mInfo = itemView.findViewById(R.id.tv_info) as TextView
+        mName = itemView.findViewById(R.id.event_name) as TextView
+        mInfo = itemView.findViewById(R.id.event_info) as TextView
         mAvatar = itemView.findViewById(R.id.avatar) as ImageView
 
         mMiddle = itemView.findViewById(R.id.header_middle)

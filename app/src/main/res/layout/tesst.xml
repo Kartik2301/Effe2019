@@ -92,7 +92,7 @@
             app:layout_constraintRight_toRightOf="@+id/header_text_2">
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/event_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/header_name_text_size"
@@ -102,7 +102,7 @@
                 android:textColor="@android:color/white"/>
 
             <TextView
-                android:id="@+id/tv_info"
+                android:id="@+id/event_info"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/header_info_text_size"

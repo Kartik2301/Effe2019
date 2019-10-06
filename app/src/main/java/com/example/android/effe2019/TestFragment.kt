@@ -113,11 +113,11 @@ class TestFragment : Fragment() {
     fun OnInnerItemClick(item: InnerItem) {
         val itemData = item.itemData ?: return
 
-        /*DetailsActivity.start(
+        DetailsActivity.start(
             activity as LaunchActivity,
             item.itemData!!.title, item.mAddress.text.toString(),
             item.itemData!!.Url, item.itemView, item.mAvatarBorder
-        )*/
+        )
     }
-    }
+}
 

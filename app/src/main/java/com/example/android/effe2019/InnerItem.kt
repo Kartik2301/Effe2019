@@ -24,7 +24,7 @@ class InnerItem(itemView: View) : com.ramotion.garlandview.inner.InnerItem(itemV
         mInnerLayout = (itemView as ViewGroup).getChildAt(0)
 
         mHeader = itemView.findViewById(R.id.tv_header) as TextView
-        mName = itemView.findViewById(R.id.tv_name) as TextView
+        mName = itemView.findViewById(R.id.event_name) as TextView
         mAddress = itemView.findViewById(R.id.tv_address) as TextView
         mAvatar = itemView.findViewById(R.id.avatar) as ImageView
         mAvatarBorder = itemView.findViewById(R.id.avatar_border)
