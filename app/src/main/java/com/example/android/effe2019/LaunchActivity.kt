@@ -44,9 +44,9 @@ class LaunchActivity : AppCompatActivity() {
             } else if (position == 1) {
                 fr = TestFragment()
             } else if (position == 2) {
-                fr = InfoFragment()
-            } else { // Note the block
                 fr = ProshowsFragment()
+            } else { // Note the block
+                fr = InfoFragment()
             }
             val fm = supportFragmentManager
             val fragmentTransaction = fm.beginTransaction()
