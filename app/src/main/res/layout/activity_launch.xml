@@ -52,10 +52,10 @@
             android:id="@+id/l5_item_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bt_colorActive="@color/green_active"
-            app:bt_colorInactive="@color/green_inactive"
+            app:bt_colorActive="@color/purple_active"
+            app:bt_colorInactive="@color/purple_inactive"
             app:bt_icon="@drawable/ic_action_proshows"
-            app:bt_shape="@drawable/transition_background_drawable_list"
+            app:bt_shape="@drawable/transition_background_drawable_person"
             app:bt_title="Pro Shows" />
 
 
@@ -63,10 +63,10 @@
             android:id="@+id/l4_item_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:bt_colorActive="@color/purple_active"
-            app:bt_colorInactive="@color/purple_inactive"
+            app:bt_colorActive="@color/green_active"
+            app:bt_colorInactive="@color/green_inactive"
             app:bt_icon="@drawable/ic_action_info"
-            app:bt_shape="@drawable/transition_background_drawable_person"
+            app:bt_shape="@drawable/transition_background_drawable_list"
             app:bt_title="Info" />
 
 
