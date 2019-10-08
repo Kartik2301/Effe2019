@@ -39,7 +39,7 @@ public class TeamAdapter extends ArrayAdapter {
         TextView name = (TextView) convertView.findViewById(R.id.profile_name);
         TextView role = (TextView) convertView.findViewById(R.id.designation) ;
         ImageView imageView = (ImageView) convertView.findViewById(R.id.profile_img);
-        ImageButton imageButton = (ImageButton) convertView.findViewById(R.id.phone);
+        ImageView imageButton =  convertView.findViewById(R.id.phone);
 
         final DataforTeam task = (DataforTeam) getItem(position);
         name.setText(task.getNameofTeamMember());
@@ -47,7 +47,7 @@ public class TeamAdapter extends ArrayAdapter {
             @Override
             public void onClick(View view) {
                 String s = String.valueOf(task.getContactofTeamMember());
-                Intent callIntent = new Intent(Intent.ACTION_CALL);
+                Intent callIntent = new Intent(Intent.ACTION_DIAL);
                 callIntent.setData(Uri.parse("tel:"+s));
                 context.startActivity(callIntent);
             }
@@ -56,11 +56,11 @@ public class TeamAdapter extends ArrayAdapter {
         Glide.with(imageView.getContext())
                 .load(task.getUrlofTeamMember())
                 .into(imageView);
-        if(position == 0){
-            CardView cv = (CardView) convertView.findViewById(R.id.card);
-            cv.setCardBackgroundColor(Color.parseColor("#FFE0B2"));
-
-        }
+//        if(position == 0){
+//            CardView cv = (CardView) convertView.findViewById(R.id.card);
+//            cv.setCardBackgroundColor(Color.parseColor("#FFE0B2"));
+//
+//        }
         return convertView;
     }
 }

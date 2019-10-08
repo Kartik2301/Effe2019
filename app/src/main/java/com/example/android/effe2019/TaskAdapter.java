@@ -43,7 +43,7 @@ public class TaskAdapter extends ArrayAdapter {
         }
         TextView titleTextView = (TextView) convertView.findViewById(R.id.profile_name);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.profile_img) ;
-        ImageButton button = (ImageButton) convertView.findViewById(R.id.gotogit);
+        ImageView button = convertView.findViewById(R.id.gotogit);
         TextView designation = (TextView) convertView.findViewById(R.id.designation);
         //TextView dateTextView = (TextView) convertView.findViewById(R.id.date);
         //TextView noteTextView = (TextView) convertView.findViewById(R.id.desc);
@@ -61,7 +61,7 @@ public class TaskAdapter extends ArrayAdapter {
             }
         });
         designation.setText(task.getDesignationDev());
-        int[] mTestArray = {R.drawable.rahul_image, R.drawable.akshit_image, R.drawable.kartik_image, R.drawable.icon};
+        int[] mTestArray = {R.drawable.rahul_image, R.drawable.akshit_image, R.drawable.kartik_image, R.drawable.anurag_image};
         imageView.setImageResource(mTestArray[position]);
 //        new DownloadImageTask(imageView)
 //                .execute(task.getImageofDev());

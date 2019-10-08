@@ -13,8 +13,8 @@ import android.net.Uri
 import android.content.pm.PackageManager
 
 class Tab4Fragment : Fragment() {
-    var FACEBOOK_URL = "https://www.facebook.com/effervescence.iiita"
-    var FACEBOOK_PAGE_ID = "effervescence"
+    var FACEBOOK_URL = "https://www.facebook.com/effervescence.iiita/"
+    var FACEBOOK_PAGE_ID = "effervescence.iiita"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Add this line in order for this fragment to handle menu events.
@@ -27,7 +27,7 @@ class Tab4Fragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_tab4, container, false)
-        rootView.instagram.setOnClickListener {
+        rootView.insta_icon.setOnClickListener {
             val uri = Uri.parse("https://www.instagram.com/goeffervescence")
             val likeIng = Intent(Intent.ACTION_VIEW, uri)
 
@@ -45,13 +45,15 @@ class Tab4Fragment : Fragment() {
             }
 
         }
-        rootView.facebook.setOnClickListener {
+        rootView.fb_icon.setOnClickListener {
             val facebookIntent = Intent(Intent.ACTION_VIEW)
             val facebookUrl = activity?.let { it1 -> getFacebookPageURL(it1) }
             facebookIntent.data = Uri.parse(facebookUrl)
             startActivity(facebookIntent)
         }
-        rootView.youtube.setOnClickListener {
+
+
+        rootView.youtube_icon.setOnClickListener {
             try {
                 val intent = Intent(Intent.ACTION_VIEW);
                 intent.setPackage("com.google.android.youtube");
@@ -61,7 +63,7 @@ class Tab4Fragment : Fragment() {
                 e.printStackTrace()
             }
         }
-        rootView.twitter.setOnClickListener {
+        rootView.twitter_icon.setOnClickListener {
             var intent: Intent? = null
             try {
                 // get the Twitter app if possible
@@ -78,7 +80,7 @@ class Tab4Fragment : Fragment() {
 
             this.startActivity(intent)
         }
-        rootView.website.setOnClickListener {
+        rootView.tv_web.setOnClickListener {
             var intent: Intent? = null
             intent = Intent(
                 Intent.ACTION_VIEW,
