@@ -51,7 +51,7 @@ class Tab3Fragment : Fragment() {
                         Users.add(User)
                     }
                 }
-                val UserAdapter = SponsorAdapter(activity, Users)
+                val UserAdapter = activity?.let { SponsorAdapter(it, Users) }
                 listViewUsers?.setAdapter(UserAdapter)
             }
 

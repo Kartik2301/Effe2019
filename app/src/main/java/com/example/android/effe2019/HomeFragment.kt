@@ -77,7 +77,7 @@ class HomeFragment : Fragment() {
                         Users.add(User)
                     }
                 }
-                val UserAdapter = HomeAdapter(activity, Users)
+                val UserAdapter = activity?.let { HomeAdapter(it, Users) }
                 listViewUsers?.setAdapter(UserAdapter)
             }
 

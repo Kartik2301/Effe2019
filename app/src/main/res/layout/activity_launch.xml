@@ -20,7 +20,7 @@
         android:id="@+id/bottom_navigation_view_linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/white"
+        android:background="#FFF3E0"
         android:elevation="8dp"
         android:orientation="horizontal"
         android:padding="12dp"

@@ -47,7 +47,7 @@ class Tab2Fragment : Fragment() {
                         Users.add(User)
                     }
                 }
-                val UserAdapter = TaskAdapter(activity, Users)
+                val UserAdapter = activity?.let { TaskAdapter(it, Users) }
                 listViewUsers?.setAdapter(UserAdapter)
             }
 

@@ -48,7 +48,7 @@ class Tab1Fragment : Fragment() {
                         Users.add(User)
                     }
                 }
-                val UserAdapter = TeamAdapter(activity, Users)
+                val UserAdapter = activity?.let { TeamAdapter(it, Users) }
                 listViewUsers?.setAdapter(UserAdapter)
             }
 
