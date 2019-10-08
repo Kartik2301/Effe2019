@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/green_bg_light"
+    android:orientation="vertical"
     android:padding="10dp">
 
     <LinearLayout
@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="EFFERVESCENCE (fondly nicknamed EFFE ) is the annual cultural festival of IIIT Allahabad and it's the second largest college fest in Uttar Pradesh and well renowned in India. Generally held in October, it attracts national as well as international participation in its multiple events during the fest. It is committed to creating an unforgettable experience for all its visitors, along with providing people from different areas a chance to showcase their talents, explore their hidden potential and win gigantic cash prizes in a very competitive yet learning environment"
-            android:textSize="18sp"/>
+            android:textSize="18sp" />
 
         <TextView
             android:layout_width="match_parent"
@@ -29,46 +29,46 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:gravity="center">
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <ImageView
                 android:id="@+id/fb_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/fb"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/fb" />
 
             <ImageView
                 android:id="@+id/twitter_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/twitter"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/twitter" />
 
 
             <ImageView
                 android:id="@+id/insta_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/instagram"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/instagram" />
 
 
             <ImageView
                 android:id="@+id/youtube_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                app:srcCompat="@drawable/youtube"
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginBottom="10dp"/>
+                android:layout_marginBottom="10dp"
+                app:srcCompat="@drawable/youtube" />
 
         </LinearLayout>
 
@@ -79,19 +79,18 @@
             android:gravity="center_horizontal">
 
             <Button
-                android:textColor="@color/green_active"
+                android:id="@+id/tv_web"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/tv_web"
                 android:layout_alignParentStart="true"
-                android:textSize="14sp"
-                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_marginTop="20dp"
-                android:text="Visit The Official Website"/>
+                android:text="Visit The Official Website"
+                android:textColor="@color/green_active"
+                android:textSize="14sp" />
 
         </RelativeLayout>
     </LinearLayout>
-
 
 
 </androidx.core.widget.NestedScrollView>
