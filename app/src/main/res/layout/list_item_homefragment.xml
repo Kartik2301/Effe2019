@@ -1,61 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:id="@+id/linear_layout"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    >
-    <androidx.cardview.widget.CardView
+    android:layout_marginStart="12dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginEnd="12dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:elevation="2dp"
+    android:focusable="true"
+    app:cardCornerRadius="2dp"
+    android:paddingBottom="8dp">
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_margin="10dp"
-        app:cardBackgroundColor="#f0e439"
-        android:layout_height="match_parent">
-        <RelativeLayout
+        android:layout_height="wrap_content"
+        android:padding="8dp"
+        android:background="@drawable/update_item_background"
+        android:orientation="vertical">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/r1">
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="10dp"
                 android:id="@+id/updates"
-                android:textColor="#4769ed"
-                android:layout_centerVertical="true"
-                android:textStyle="bold" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_weight="1"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                tools:text="TextView" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
                 android:id="@+id/date"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:textColor="#4E342E"
-                android:textStyle="italic" />
-        </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#FFECB3"
-            android:layout_below="@id/r1"
-            android:layout_marginTop="25dp">
-
-
-            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:alpha="1"
-                android:fontFamily="monospace"
-                android:id="@+id/desc"
-                android:maxLines="10"
-                android:padding="5dp"
-                android:textSize="12dp"
-                android:textAlignment="center"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:textFontWeight="1" />
-        </RelativeLayout>
-    </androidx.cardview.widget.CardView>
+                android:layout_marginEnd="8dp"
+                android:textAlignment="textEnd"
+                android:textColor="#F02C5364"
+                tools:text="TextView" />
 
-</LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/desc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:textSize="16sp"
+            tools:text="TextView" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
