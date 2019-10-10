@@ -31,11 +31,11 @@ import androidx.core.content.ContextCompat.getSystemService
 import android.hardware.SensorManager
 import androidx.core.content.ContextCompat.getSystemService
 
-class HomeFragment : Fragment() {
+class HomeFragment(var Users: ArrayList<DataforHome>?) : Fragment() {
     val TAG: String = "0"
     private var listViewUsers: ListView? = null
     private lateinit var sensorManager: SensorManager
-    internal lateinit var Users: MutableList<DataforHome>
+//    internal lateinit var Users: MutableList<DataforHome>
     private var databaseReference: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,13 +51,13 @@ class HomeFragment : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
-        Users = ArrayList()
-        databaseReference = FirebaseDatabase.getInstance().getReference("updates")
-        listViewUsers = rootView.findViewById(R.id.list) as ListView
-// list item click listener
-        listViewUsers!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
-            val User = Users[i]
-        })
+//        Users = ArrayList()
+//        databaseReference = FirebaseDatabase.getInstance().getReference("updates")
+//        listViewUsers = rootView.findViewById(R.id.list) as ListView
+//// list item click listener
+//        listViewUsers!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
+//            val User = Users[i]
+//        })
 
         return rootView
     }
@@ -66,25 +66,26 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         on()
     }
-     fun on() {
-        databaseReference?.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(dataSnapshot: DataSnapshot) {
-88
-                Users.clear()
-                for (postSnapshot in dataSnapshot.children) {
-                    val User = postSnapshot.getValue(DataforHome::class.java)
-                    if (User != null) {
-                        Users.add(User)
-                    }
-                }
-                val UserAdapter = activity?.let { HomeAdapter(it, Users) }
-                listViewUsers?.setAdapter(UserAdapter)
-            }
+     private fun on() {
+//        databaseReference?.addValueEventListener(object : ValueEventListener {
+//            override fun onDataChange(dataSnapshot: DataSnapshot) {
+//88
+//                Users.clear()
+//                for (postSnapshot in dataSnapshot.children) {
+//                    val User = postSnapshot.getValue(DataforHome::class.java)
+//                    if (User != null) {
+//                        Users.add(User)
+//                    }
+//                }
+//            }
+//
+//            override fun onCancelled(databaseError: DatabaseError) {
+//
+//            }
+//        })
+         val userAdapter = activity?.let { HomeAdapter(it, Users) }
+         listViewUsers?.adapter = userAdapter
 
-            override fun onCancelled(databaseError: DatabaseError) {
-
-            }
-        })
-    }
+     }
 
 }

@@ -12,7 +12,9 @@ import android.R.attr.fragment
 import androidx.core.app.ComponentActivity.ExtraData
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.Toast
 import androidx.fragment.app.FragmentTransaction
+import kotlinx.android.synthetic.main.list_item_homefragment.*
 
 
 class LaunchActivity : AppCompatActivity() {
@@ -26,38 +28,39 @@ class LaunchActivity : AppCompatActivity() {
 //        getSupportActionBar()?.setTitle("My Effe");
 //        val obj : HomeFragment = HomeFragment()
 //        obj.on();
-        var fr: Fragment
 
-        fr = HomeFragment()
+        val bundle: Bundle? = intent.extras
+        val updatesArrayList = bundle!!.getParcelableArrayList<DataforHome>("UPDATES")
+//        if (updatesArrayList != null)
+//            Toast.makeText(this, updatesArrayList.size.toString(), Toast.LENGTH_LONG).show()
+        var fr: Fragment
+        fr = HomeFragment(updatesArrayList)
         val fm = supportFragmentManager
         var fragmentTransaction = fm.beginTransaction()
         var replace = fragmentTransaction.replace(R.id.container2, fr)
         fragmentTransaction.commit()
         val bubbleNavigationLinearView =
             findViewById<View>(R.id.bottom_navigation_view_linear) as BubbleNavigationLinearView
+
         bubbleNavigationLinearView.setNavigationChangeListener { view, position ->
-
-            if (position == 0) {
-
-                fr = HomeFragment()
-
+            fr = if (position == 0) {
+                HomeFragment(updatesArrayList)
             } else if (position == 1) {
-                fr = TestFragment()
+                TestFragment()
             } else if (position == 2) {
-                fr = ProshowsFragment()
+                ProshowsFragment()
             } else { // Note the block
-                fr = InfoFragment()
+                InfoFragment()
             }
             val fm = supportFragmentManager
             val fragmentTransaction = fm.beginTransaction()
             fragmentTransaction.addToBackStack(null)
-            val replace = fragmentTransaction.replace(R.id.container2, fr)
+            fragmentTransaction.replace(R.id.container2, fr)
             fragmentTransaction.commit()
         }
     }
 
     override fun onStart() {
         super.onStart()
-
     }
 }

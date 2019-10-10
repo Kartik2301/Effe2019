@@ -25,8 +25,8 @@ import java.util.Date
 
 class HomeAdapter(
     private val context: Activity, //list of users
-    internal var Users: List<DataforHome>
-) : ArrayAdapter<Any>(context, R.layout.list_item_homefragment, Users) {
+    internal var Users: ArrayList<DataforHome>?
+) : ArrayAdapter<DataforHome>(context, R.layout.list_item_homefragment, Users as MutableList<DataforHome>) {
 
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
