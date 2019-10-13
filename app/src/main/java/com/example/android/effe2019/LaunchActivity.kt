@@ -2,19 +2,11 @@ package com.example.android.effe2019
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.app.ActionBar
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView
-import android.R.attr.fragment
-import androidx.core.app.ComponentActivity.ExtraData
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.widget.Toast
-import androidx.fragment.app.FragmentTransaction
-import kotlinx.android.synthetic.main.list_item_homefragment.*
 
 
 class LaunchActivity : AppCompatActivity() {
@@ -30,7 +22,7 @@ class LaunchActivity : AppCompatActivity() {
 //        obj.on();
 
         val bundle: Bundle? = intent.extras
-        val updatesArrayList = bundle!!.getParcelableArrayList<DataforHome>("UPDATES")
+        val updatesArrayList = bundle!!.getParcelableArrayList<DataForHome>("UPDATES")
 //        if (updatesArrayList != null)
 //            Toast.makeText(this, updatesArrayList.size.toString(), Toast.LENGTH_LONG).show()
         var fr: Fragment

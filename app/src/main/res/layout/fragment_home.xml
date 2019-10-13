@@ -15,6 +15,4 @@
         android:dividerHeight="8dp"
         android:padding="8dp"
         android:scrollbars="none" />
-
-
 </RelativeLayout>

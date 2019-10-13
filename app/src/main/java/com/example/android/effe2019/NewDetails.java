@@ -15,8 +15,8 @@ public class NewDetails extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-//        super.onBackPressed();
-        Intent i = new Intent(NewDetails.this,LaunchActivity.class);
-        startActivity(i);
+        super.onBackPressed();
+//        Intent i = new Intent(NewDetails.this,LaunchActivity.class);
+//        startActivity(i);
     }
 }

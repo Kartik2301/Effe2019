@@ -5,16 +5,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.google.firebase.database.*
 import java.io.Serializable
-import androidx.core.content.ContextCompat.getSystemService
-import android.icu.lang.UCharacter.GraphemeClusterBreak.T
-import android.widget.Toast
-import com.esotericsoftware.kryo.util.IntArray
-import com.firebase.ui.auth.data.model.User
 
 
 class SplashActivity : AppCompatActivity(), Serializable {
-    internal lateinit var updates: ArrayList<DataforHome>
+    internal lateinit var updates: ArrayList<DataForHome>
     private var updatesDatabaseReference: DatabaseReference? = null
+    var bundle = Bundle()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +25,23 @@ class SplashActivity : AppCompatActivity(), Serializable {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 updates.clear()
                 for (postSnapshot in dataSnapshot.children) {
-                    val update = postSnapshot.getValue(DataforHome::class.java)
+                    val update = postSnapshot.getValue(DataForHome::class.java)
                     if (update != null) {
                         updates.add(update)
+
                     }
                 }
+                startLaunchActivity()
             }
-
             override fun onCancelled(databaseError: DatabaseError) {
 
             }
         })
+    }
 
+    private fun startLaunchActivity() {
+//        Toast.makeText(this@SplashActivity, updates.size.toString(), Toast.LENGTH_LONG).show()
         var intent = Intent(this, LaunchActivity::class.java)
-        var bundle = Bundle()
         bundle.putParcelableArrayList("UPDATES", updates)
         intent.putExtras(bundle)
         startActivity(intent)
