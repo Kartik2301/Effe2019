@@ -1,5 +1,6 @@
 package com.example.android.effe2019
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -113,11 +114,17 @@ class TestFragment : Fragment() {
     fun OnInnerItemClick(item: InnerItem) {
         val itemData = item.itemData ?: return
 
-        DetailsActivity.start(
-            activity as LaunchActivity,
-            item.itemData!!.title, item.mAddress.text.toString(),
-            item.itemData!!.Url, item.itemView, item.mAvatarBorder
-        )
+//        DetailsActivity.start(
+//            activity as LaunchActivity,
+//            item.itemData!!.title, item.mAddress.text.toString(),
+//            item.itemData!!.Url, item.itemView, item.mAvatarBorder
+//        )
+        val myDialog = AlertDialog.Builder(activity)
+        val inflater = LayoutInflater.from(activity)
+        val myview = inflater.inflate(R.layout.custominputfield, null)
+        myDialog.setView(myview)
+        val dialog: AlertDialog = myDialog.create();
+        dialog.show()
     }
 }
 
