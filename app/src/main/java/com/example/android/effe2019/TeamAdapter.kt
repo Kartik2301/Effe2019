@@ -15,16 +15,14 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 
-import androidx.cardview.widget.CardView
-
 import com.bumptech.glide.Glide
-
-import java.io.InputStream
 
 class TeamAdapter(
     private val context: Activity, //list of users
-    internal var Users: List<DataForTeam>
-) : ArrayAdapter<Any>(context, R.layout.list_itemforteam, Users) {
+    internal var Users: ArrayList<DataForTeam>?
+) : ArrayAdapter<DataForTeam>(context, R.layout.list_itemforteam,
+    (Users as MutableList<DataForTeam>?)!!
+) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
         if (convertView == null) {

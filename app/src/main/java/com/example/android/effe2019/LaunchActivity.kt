@@ -13,18 +13,11 @@ class LaunchActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_launch)
-//        val actionBar: ActionBar
-//        actionBar = this!!.supportActionBar!!
-//        actionBar?.setBackgroundDrawable(resources.getDrawable(R.drawable.mygradient))
-//        getActionBar()?.setTitle("My Effe");
-//        getSupportActionBar()?.setTitle("My Effe");
-//        val obj : HomeFragment = HomeFragment()
-//        obj.on();
 
         val bundle: Bundle? = intent.extras
         val updatesArrayList = bundle!!.getParcelableArrayList<DataForHome>("UPDATES")
-//        if (updatesArrayList != null)
-//            Toast.makeText(this, updatesArrayList.size.toString(), Toast.LENGTH_LONG).show()
+        val teamArrayList = bundle!!.getParcelableArrayList<DataForTeam>("TEAM")
+        val sponsorsArrayList = bundle!!.getParcelableArrayList<DataForSponsors>("SPONSORS")
         var fr: Fragment
         fr = HomeFragment(updatesArrayList)
         val fm = supportFragmentManager
@@ -42,7 +35,7 @@ class LaunchActivity : AppCompatActivity() {
             } else if (position == 2) {
                 ProshowsFragment()
             } else { // Note the block
-                InfoFragment()
+                InfoFragment(teamArrayList, sponsorsArrayList)
             }
             val fm = supportFragmentManager
             val fragmentTransaction = fm.beginTransaction()

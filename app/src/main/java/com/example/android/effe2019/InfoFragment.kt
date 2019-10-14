@@ -10,7 +10,8 @@ import androidx.viewpager.widget.ViewPager
 
 import com.google.android.material.tabs.TabLayout
 
-class InfoFragment : Fragment() {
+class InfoFragment(val team: ArrayList<DataForTeam>?, val sponsors: ArrayList<DataForSponsors>?) :
+    Fragment() {
     private var adapter: TabAdapter? = null
     private var tabLayout: TabLayout? = null
     private var viewPager: ViewPager? = null
@@ -28,9 +29,9 @@ class InfoFragment : Fragment() {
         viewPager = rootView.findViewById<View>(R.id.viewPager) as ViewPager
         tabLayout = rootView.findViewById<View>(R.id.tabLayout) as TabLayout
         adapter = TabAdapter(fragmentManager!!)
-        adapter!!.addFragment(Tab1Fragment(), "Team")
+        adapter!!.addFragment(Tab1Fragment(team), "Team")
         adapter!!.addFragment(Tab2Fragment(), "Developers")
-        adapter!!.addFragment(Tab3Fragment(), "Sponsors")
+        adapter!!.addFragment(Tab3Fragment(sponsors), "Sponsors")
         adapter!!.addFragment(Tab4Fragment(), "About")
         viewPager!!.adapter = adapter
         tabLayout!!.setupWithViewPager(viewPager)

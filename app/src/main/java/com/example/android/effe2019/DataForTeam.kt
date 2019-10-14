@@ -30,7 +30,7 @@ class DataForTeam : Parcelable {
     }
 
     companion object {
-
+        @JvmField
         val CREATOR: Parcelable.Creator<DataForTeam> = object : Parcelable.Creator<DataForTeam> {
             override fun createFromParcel(source: Parcel): DataForTeam {
                 return DataForTeam(source)
