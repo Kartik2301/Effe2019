@@ -3,23 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_marginBottom="70dp">
+    android:layout_marginBottom="70dp"
+    android:background="@drawable/eventgradient">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <View
-            android:id="@+id/background"
-            android:layout_width="match_parent"
-            android:layout_height="280dp"
-            android:background="@color/backgroundTop"/>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/backgroundBottom"/>
 
     </LinearLayout>
 
