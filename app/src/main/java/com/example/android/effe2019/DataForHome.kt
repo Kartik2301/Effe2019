@@ -3,64 +3,51 @@ package com.example.android.effe2019
 import android.os.Parcel
 import android.os.Parcelable
 
-
 class DataForHome : Parcelable {
     var description: String? = null
-
     var eventID: Int = 0
-
     var senderEmail: String? = null
-
     var senderName: String? = null
-
-    var timestamp: Long = 0
-
+    var timestamp: Long? = null
     var title: String? = null
-
-    var verified: Boolean = true
+    var verified: Boolean? = null
 
     constructor() {}
 
-    constructor(
-        title: String,
-        description: String,
-        timestamp: Long,
-        eventID: Int,
-        senderEmail: String,
-        senderName: String,
-        verified: Boolean
-    ) {
-        this.title = title
-        this.description = description
-        this.timestamp = timestamp
-        this.eventID = eventID
-        this.senderEmail = senderEmail
-        this.senderName = senderName
-        this.verified = verified
-    }
-    
-    constructor(source: Parcel) : this(
-    )
-
-    override fun describeContents() = 0
-
-    override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeString(description)
-        parcel.writeInt(eventID)
-        parcel.writeString(senderEmail)
-        parcel.writeString(senderName)
-        parcel.writeLong(timestamp)
-        parcel.writeString(title)
-        parcel.writeByte(if (verified) 1 else 0)
+    override fun describeContents(): Int {
+        return 0
     }
 
-    companion object CREATOR : Parcelable.Creator<UpdatesData> {
-        override fun createFromParcel(parcel: Parcel): UpdatesData {
-            return UpdatesData(parcel)
-        }
+    override fun writeToParcel(dest: Parcel, flags: Int) {
+        dest.writeString(this.description)
+        dest.writeInt(this.eventID)
+        dest.writeString(this.senderEmail)
+        dest.writeString(this.senderName)
+        dest.writeValue(this.timestamp)
+        dest.writeString(this.title)
+        dest.writeValue(this.verified)
+    }
 
-        override fun newArray(size: Int): Array<UpdatesData?> {
-            return arrayOfNulls(size)
+    protected constructor(`in`: Parcel) {
+        this.description = `in`.readString()
+        this.eventID = `in`.readInt()
+        this.senderEmail = `in`.readString()
+        this.senderName = `in`.readString()
+        this.timestamp = `in`.readValue(Long::class.java.classLoader) as Long?
+        this.title = `in`.readString()
+        this.verified = `in`.readValue(Boolean::class.java.classLoader) as Boolean?
+    }
+
+    companion object {
+        @JvmField
+        val CREATOR: Parcelable.Creator<DataForHome> = object : Parcelable.Creator<DataForHome> {
+            override fun createFromParcel(source: Parcel): DataForHome {
+                return DataForHome(source)
+            }
+
+            override fun newArray(size: Int): Array<DataForHome?> {
+                return arrayOfNulls(size)
+            }
         }
     }
 }

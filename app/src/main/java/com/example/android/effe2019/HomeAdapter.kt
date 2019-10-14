@@ -30,11 +30,11 @@ class HomeAdapter(
         val date = convertView.findViewById<View>(R.id.date) as TextView
         val desc = convertView.findViewById<View>(R.id.desc) as TextView
         //        View navigationView = convertView.findViewById(R.id.bottom_navigation_view_linear);
-        val task = getItem(position) as DataForHome?
+        val task = getItem(position)
         val timeStamp = task!!.timestamp
         title.text = task.title
         desc.text = task.description
-        date.text = convertTime(timeStamp)
+        date.text = convertTime(timeStamp!!)
         //        navigationView.setBackgroundColor(ContextCompat.getColor(this.context, R.color.red_bg_light));
 
         return convertView

@@ -23,7 +23,7 @@ import java.io.InputStream
 
 class TeamAdapter(
     private val context: Activity, //list of users
-    internal var Users: List<DataforTeam>
+    internal var Users: List<DataForTeam>
 ) : ArrayAdapter<Any>(context, R.layout.list_itemforteam, Users) {
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var convertView = convertView
@@ -39,17 +39,17 @@ class TeamAdapter(
         val imageView = convertView.findViewById<View>(R.id.profile_img) as ImageView
         val imageButton = convertView.findViewById<ImageView>(R.id.phone)
 
-        val task = getItem(position) as DataforTeam?
-        name.text = task!!.getNameofTeamMember()
+        val task = getItem(position) as DataForTeam?
+        name.text = task!!.name
         imageButton.setOnClickListener {
-            val s = task.getContactofTeamMember().toString()
+            val s = task.contact.toString()
             val callIntent = Intent(Intent.ACTION_DIAL)
             callIntent.data = Uri.parse("tel:$s")
             context.startActivity(callIntent)
         }
-        role.text = task.getPositionofTeamMember()
+        role.text = task.postition
         Glide.with(imageView.context)
-            .load(task.getUrlofTeamMember())
+            .load(task.imageurl)
             .into(imageView)
         //        if(position == 0){
         //            CardView cv = (CardView) convertView.findViewById(R.id.card);

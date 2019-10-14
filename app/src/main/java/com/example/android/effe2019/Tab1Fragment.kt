@@ -13,7 +13,7 @@ import java.util.ArrayList
 
 class Tab1Fragment : Fragment() {
     private var listViewUsers: ListView? = null
-    internal lateinit var Users: MutableList<DataforTeam>
+    internal lateinit var Users: MutableList<DataForTeam>
     private var databaseReference: DatabaseReference? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -43,7 +43,7 @@ class Tab1Fragment : Fragment() {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 Users.clear()
                 for (postSnapshot in dataSnapshot.children) {
-                    val User = postSnapshot.getValue(DataforTeam::class.java)
+                    val User = postSnapshot.getValue(DataForTeam::class.java)
                     if (User != null) {
                         Users.add(User)
                     }

@@ -10,6 +10,7 @@ import com.google.firebase.database.*
 
 import java.util.ArrayList
 import android.hardware.SensorManager
+import android.widget.Toast
 
 class HomeFragment(var users: ArrayList<DataForHome>?) : Fragment() {
     val TAG: String = "0"
@@ -34,7 +35,7 @@ class HomeFragment(var users: ArrayList<DataForHome>?) : Fragment() {
 
 //        users = ArrayList()
 //        databaseReference = FirebaseDatabase.getInstance().getReference("updates")
-//        listViewUsers = rootView.findViewById(R.id.list) as ListView
+        listViewUsers = rootView.findViewById(R.id.list) as ListView
 //// list item click listener
 //        listViewUsers!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
 //            val User = users[i]
@@ -49,7 +50,7 @@ class HomeFragment(var users: ArrayList<DataForHome>?) : Fragment() {
     }
      private fun on() {
          userAdapter = activity?.let { HomeAdapter(it, users) }!!
-         listViewUsers?.adapter = userAdapter
+         listViewUsers!!.adapter = userAdapter
      }
 
 }
