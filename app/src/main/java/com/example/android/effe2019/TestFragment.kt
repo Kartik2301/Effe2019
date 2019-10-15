@@ -5,8 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
 
 import androidx.fragment.app.Fragment
+import com.bumptech.glide.Glide
 
 import com.ramotion.garlandview.TailLayoutManager
 import com.ramotion.garlandview.TailRecyclerView
@@ -112,16 +115,25 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
 
     @Subscribe(threadMode = ThreadMode.MAIN)
     fun OnInnerItemClick(item: InnerItem) {
-        val itemData = item.itemData ?: return
-
-//        DetailsActivity.start(
-//            activity as LaunchActivity,
-//            item.itemData!!.title, item.mAddress.text.toString(),
-//            item.itemData!!.Url, item.itemView, item.mAvatarBorder
-//        )
+        val itemData = item.itemData ?: return;
+        if (itemData == null) {
+            return;
+        }
+        val name : TextView
+        val date : TextView
+        val description : TextView
+        val image : ImageView
         val myDialog = AlertDialog.Builder(activity)
         val inflater = LayoutInflater.from(activity)
         val myview = inflater.inflate(R.layout.custominputfield, null)
+        name = myview.findViewById(R.id.name)
+        date = myview.findViewById(R.id.date)
+        image = myview.findViewById(R.id.imageView)
+        name.text = itemData.title
+        date.text = itemData.date
+        Glide.with(image.context)
+            .load(itemData.Url)
+            .into(image)
         myDialog.setView(myview)
         val dialog: AlertDialog = myDialog.create();
         dialog.show()
