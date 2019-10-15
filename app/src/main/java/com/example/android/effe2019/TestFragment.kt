@@ -1,5 +1,6 @@
 package com.example.android.effe2019
 
+import android.annotation.SuppressLint
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -23,10 +24,8 @@ import org.greenrobot.eventbus.ThreadMode
 import java.util.ArrayList
 
 import io.reactivex.Single
-import io.reactivex.SingleEmitter
 import io.reactivex.SingleOnSubscribe
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
 class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
@@ -67,19 +66,34 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
     }
 
 
+    @SuppressLint("CheckResult")
     fun onFakerReady() {
         Single.create(SingleOnSubscribe<List<List<InnerData>>> { e ->
             val outerData = ArrayList<List<InnerData>>()
+            val outerData1 = ArrayList<List<InnerData>>()
             var i = 0
-            while (i < 9 && !e.isDisposed) {
+            var check = 0
+            var mark = 0
                 val innerData = ArrayList<InnerData>()
-                var j = 0
-                while (j < 4 && !e.isDisposed) {
-                    innerData.add(createInnerData(i))
+            val innerData1 = ArrayList<InnerData>()
+
+            var j = 0
+                while (j < events!!.size && !e.isDisposed) {
+                    if(events!!.get(j).categories.toString().equals("music")){
+                        check = 1
+                        innerData.add(createInnerData(4, events!!.get(j)))
+                    }
+                    if(events!!.get(j).categories.toString().equals("informal")){
+                        mark = 1
+                        innerData1.add(createInnerData(8, events!!.get(j)))
+                    }
                     j++
                 }
+            if(check == 1){
                 outerData.add(innerData)
-                i++
+            }
+            if(mark == 1){
+                outerData.add(innerData1)
             }
 
             if (!e.isDisposed) {
@@ -89,7 +103,9 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe { outerData -> initRecyclerView(outerData) }
+
     }
+
 
     private fun initRecyclerView(data: List<List<InnerData>>) {
 
@@ -100,14 +116,14 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
         TailSnapHelper().attachToRecyclerView(rv)
     }
 
-    private fun createInnerData(i: Int): InnerData {
+    private fun createInnerData(i: Int, get: DataForEvents): InnerData {
         return InnerData(
             "Informal",
-            "Some Random Event",
-            "Main Audi",
+            get.name!!,
+            get.location!!,
             "6:00 pm",
             "Important Event",
-            "https://github.com/Effervescence-IIITA/Effervescence18/raw/master/images/events/cognoscentia.jpg",
+            get.imageUrl!!,
             parent[i],
             "6 October"
         )

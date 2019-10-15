@@ -98,7 +98,7 @@ class ProshowsFragment : Fragment() {
                 .withSubTitle("17th October")
                 .withDescription(desc_kavyom.toUpperCase())
                 .withImageRes(imgkavyom)
-                .withImageCutType(ImageCutType.WAVE)
+                .withImageCutType(ImageCutType.LINE_POSITIVE)
                 .withImageCutHeightDP(50)
         )
         pager.adapter = pagerAdapter
