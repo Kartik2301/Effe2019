@@ -26,7 +26,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Consumer
 import io.reactivex.schedulers.Schedulers
 
-class TestFragment : Fragment() {
+class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
     internal lateinit var rootView: View
     lateinit var parent: Array<String>
     override fun onCreate(savedInstanceState: Bundle?) {

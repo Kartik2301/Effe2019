@@ -24,6 +24,8 @@ class LaunchActivity : AppCompatActivity() {
         val updatesArrayList = bundle!!.getParcelableArrayList<DataForHome>("UPDATES")
         val teamArrayList = bundle!!.getParcelableArrayList<DataForTeam>("TEAM")
         val sponsorsArrayList = bundle!!.getParcelableArrayList<DataForSponsors>("SPONSORS")
+        val eventsArrayList = bundle.getParcelableArrayList<DataForEvents>("EVENTS")
+
         var fr: Fragment
         fr = HomeFragment(updatesArrayList)
         val fm = supportFragmentManager
@@ -37,7 +39,7 @@ class LaunchActivity : AppCompatActivity() {
             fr = if (position == 0) {
                 HomeFragment(updatesArrayList)
             } else if (position == 1) {
-                TestFragment()
+                TestFragment(eventsArrayList)
             } else if (position == 2) {
                 ProshowsFragment()
             } else { // Note the block

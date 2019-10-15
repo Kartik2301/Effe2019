@@ -11,12 +11,15 @@ import com.google.firebase.database.*
 import java.util.ArrayList
 import android.hardware.SensorManager
 import android.widget.Toast
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment(var users: ArrayList<DataForHome>?) : Fragment() {
     val TAG: String = "0"
     private var listViewUsers: ListView? = null
     private lateinit var sensorManager: SensorManager
-//    internal lateinit var users: MutableList<DataForHome>
+    //    internal lateinit var users: MutableList<DataForHome>
     lateinit var userAdapter: HomeAdapter
     private var databaseReference: DatabaseReference? = null
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,24 +36,34 @@ class HomeFragment(var users: ArrayList<DataForHome>?) : Fragment() {
     ): View? {
         val rootView = inflater.inflate(R.layout.fragment_home, container, false)
 
-//        users = ArrayList()
-//        databaseReference = FirebaseDatabase.getInstance().getReference("updates")
         listViewUsers = rootView.findViewById(R.id.list) as ListView
-//// list item click listener
-//        listViewUsers!!.setOnItemClickListener(AdapterView.OnItemClickListener { adapterView, view, i, l ->
-//            val User = users[i]
-//        })
 
         return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        on()
+        populateLists()
     }
-     private fun on() {
-         userAdapter = activity?.let { HomeAdapter(it, users) }!!
-         listViewUsers!!.adapter = userAdapter
-     }
 
+    private fun populateLists() {
+//        val layoutManager = LinearLayoutManager(context)
+//        layoutManager.isAutoMeasureEnabled = true
+//
+//        bookmarksRecyclerView.layoutManager = LinearLayoutManager(context,
+//            LinearLayoutManager.HORIZONTAL, false)
+//        bookmarksRecyclerView.isNestedScrollingEnabled = false
+//
+//        bookmarksRecyclerView.setHasFixedSize(true)
+//        bookmarksRecyclerView.setItemViewCacheSize(20)
+//        bookmarksRecyclerView.isDrawingCacheEnabled = true
+//        bookmarksRecyclerView.drawingCacheQuality = View.DRAWING_CACHE_QUALITY_HIGH
+
+//        val bookmarksAdapter = UpcomingAdapter(context!!)
+//        bookmarksRecyclerView.adapter = bookmarksAdapter
+
+
+        val userAdapter = activity?.let { HomeAdapter(it, users) }!!
+        listViewUsers!!.adapter = userAdapter
+    }
 }

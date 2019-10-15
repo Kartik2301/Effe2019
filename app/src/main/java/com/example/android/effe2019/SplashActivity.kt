@@ -24,6 +24,7 @@ import android.widget.RelativeLayout
 
 
 class SplashActivity : AppCompatActivity(), Serializable {
+    private lateinit var events: ArrayList<DataForEvents>
     private lateinit var updates: ArrayList<DataForHome>
     private lateinit var team: ArrayList<DataForTeam>
     private lateinit var sponsors: ArrayList<DataForSponsors>
@@ -46,6 +47,7 @@ class SplashActivity : AppCompatActivity(), Serializable {
 
         startLogoAnimation()
         firebaseDatabaseReference = FirebaseDatabase.getInstance().reference
+        events = ArrayList()
         updates = ArrayList()
         team = ArrayList()
         sponsors = ArrayList()
@@ -92,6 +94,7 @@ class SplashActivity : AppCompatActivity(), Serializable {
         bundle.putParcelableArrayList("UPDATES", updates)
         bundle.putParcelableArrayList("TEAM", team)
         bundle.putParcelableArrayList("SPONSORS", sponsors)
+        bundle.putParcelableArrayList("EVENTS", events)
         intent.putExtras(bundle)
         startActivity(intent)
     }
@@ -100,6 +103,7 @@ class SplashActivity : AppCompatActivity(), Serializable {
         val updatesDataSnapshot = dataSnapshot.child("updates")
         val teamDataSnapshot = dataSnapshot.child("team")
         val sponsorsDataSnapshot = dataSnapshot.child("sponsors")
+        val eventsDataSnapshot = dataSnapshot.child("events")
 
         updates.clear()
         for (postSnapshot in updatesDataSnapshot.children) {
@@ -123,6 +127,14 @@ class SplashActivity : AppCompatActivity(), Serializable {
             val member = postSnapshot.getValue(DataForSponsors::class.java)
             if (member != null) {
                 sponsors.add(member)
+            }
+        }
+
+        events.clear()
+        for (postSnapshot in eventsDataSnapshot.children) {
+            val member = postSnapshot.getValue(DataForEvents::class.java)
+            if (member != null) {
+                events.add(member)
             }
         }
     }

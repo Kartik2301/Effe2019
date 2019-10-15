@@ -12,6 +12,8 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
+import com.bumptech.glide.request.RequestOptions
 
 class SponsorAdapter(
     private val context: Activity, //list of users
@@ -45,8 +47,11 @@ class SponsorAdapter(
         }
         val ch = ','
         role.text = str
+        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+
         Glide.with(imageView.context)
             .load(task.imageUrl)
+            .apply(requestOptions)
             .into(imageView)
         /*new DownloadImageTask(imageView)
         .execute(task.getUrlofSponsor());*/
