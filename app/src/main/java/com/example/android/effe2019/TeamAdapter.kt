@@ -45,9 +45,9 @@ class TeamAdapter(
             callIntent.data = Uri.parse("tel:$s")
             context.startActivity(callIntent)
         }
-        role.text = task.postition
+        role.text = task.position
         Glide.with(imageView.context)
-            .load(task.imageurl)
+            .load(task.imageUrl)
             .into(imageView)
         //        if(position == 0){
         //            CardView cv = (CardView) convertView.findViewById(R.id.card);

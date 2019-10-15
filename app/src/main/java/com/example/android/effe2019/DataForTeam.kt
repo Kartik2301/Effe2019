@@ -5,9 +5,9 @@ import android.os.Parcelable
 
 class DataForTeam : Parcelable {
     var name: String? = null
-    var imageurl: String? = null
-    var postition: String? = null
-    var contact: Long? = null
+    var imageUrl: String? = null
+    var position: String? = null
+    var contact: String? = null
 
     override fun describeContents(): Int {
         return 0
@@ -15,8 +15,8 @@ class DataForTeam : Parcelable {
 
     override fun writeToParcel(dest: Parcel, flags: Int) {
         dest.writeString(this.name)
-        dest.writeString(this.imageurl)
-        dest.writeString(this.postition)
+        dest.writeString(this.imageUrl)
+        dest.writeString(this.position)
         dest.writeValue(this.contact)
     }
 
@@ -24,9 +24,9 @@ class DataForTeam : Parcelable {
 
     protected constructor(`in`: Parcel) {
         this.name = `in`.readString()
-        this.imageurl = `in`.readString()
-        this.postition = `in`.readString()
-        this.contact = `in`.readValue(Long::class.java.classLoader) as Long?
+        this.imageUrl = `in`.readString()
+        this.position = `in`.readString()
+        this.contact = `in`.readValue(String::class.java.classLoader) as String?
     }
 
     companion object {

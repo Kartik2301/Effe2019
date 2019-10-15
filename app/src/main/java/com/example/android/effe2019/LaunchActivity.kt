@@ -7,6 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
 import com.gauravk.bubblenavigation.BubbleNavigationLinearView
+import android.content.Intent
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.esotericsoftware.kryo.util.IntArray
+
+
 
 
 class LaunchActivity : AppCompatActivity() {
@@ -43,6 +49,13 @@ class LaunchActivity : AppCompatActivity() {
             fragmentTransaction.replace(R.id.container2, fr)
             fragmentTransaction.commit()
         }
+    }
+
+    override fun onBackPressed() {
+        val intent = Intent(Intent.ACTION_MAIN)
+        intent.addCategory(Intent.CATEGORY_HOME)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP//***Change Here***
+        startActivity(intent)
     }
 
     override fun onStart() {
