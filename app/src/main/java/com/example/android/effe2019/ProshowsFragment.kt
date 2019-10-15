@@ -27,42 +27,36 @@ class ProshowsFragment : Fragment() {
     private fun setupViewPager(view: View) {
         val resources = context!!.resources
 
-        val imgSunidhi = resources.getIdentifier("celebnight", "drawable", activity!!.packageName)
-        val imgHumour = resources.getIdentifier("humournight", "drawable", activity!!.packageName)
-        val imgEDM = resources.getIdentifier("edmnight", "drawable", activity!!.packageName)
-        val imgRock = resources.getIdentifier("localtrain", "drawable", activity!!.packageName)
+        val imgNeeti = resources.getIdentifier("img_neeti", "drawable", activity!!.packageName)
+        val imgHumour = resources.getIdentifier("comedy_night", "drawable", activity!!.packageName)
+        val imgEDM = resources.getIdentifier("edm", "drawable", activity!!.packageName)
+        val imgRock = resources.getIdentifier("rockband", "drawable", activity!!.packageName)
+        val imgkavyom = resources.getIdentifier("kavyom", "drawable", activity!!.packageName)
 
         val desc_celeb = "They say that when you become a celebrity ,you own the world and the world owns you. " +
                 "So get ready to own the world as the bar has been raised up higher. After superstars like Neha " +
-                "Kakkar,Benny Dayal and Farhan Akhtar, Effervescence’18 proudly presents to you Sunidhi Chauhan performing this October !"
+                "Kakkar,Benny Dayal and Farhan Akhtar, Effervescence’19 proudly presents to you Neeti Mohan performing this October !"
 
-        val desc_edm = "EDM isn’t just about drops and rave, it is the form of music that has something to offer" +
-                " to everyone. Get ready to match you heartbeats with the beats and drops and dance your heart out " +
-                "with famous ZEPHYRTONE all set to raise the electric mood in the atmosphere!"
+        val desc_edm = "EDM at Effervescence has always been exhilarating, and to continue the legacy, we present before you the EDM Sensation 'Ritviz'"+
+                "Keep your heart within, for it may ebb away at the thought of how great an evening is set." +
+                "Get ready to dance in the spine-chilling caravan of music"
+                "Get ready to be shimmy evermore."
 
-        val desc_kavyom = "Gear up to enjoy the Infinite Sky of Poetry at Kavyom, being held for the very first " +
-                "time in IIIT Allahabad. Relish an indelible and a stupendous evening with the one and only, Kumar " +
-                "Vishwas. It is doubtlessly going to be the most congenial event for all poetry lovers out there."
+        val desc_kavyom = "Kavyom brings with itself the aesthetic beauty of poetry. And, this year, the Stage will be taken over by the duo of Sunil Jogi and Shlesh Gautam, who are ready to enchant you with their poetic brilliance. Keep still, for one excerpt may change it all."
 
-        val desc_humour = "The best thing about comedians apart from their wit and talent, is their confidence to bring " +
-                "out the mirth in small things! Known as one of the Rising Stars of Comedy in India, is one such comedian," +
-                " Aakash Gupta! We're bringing in the pros, to help you forget your woes! " +
-                "So, prepare to burst your lungs out and laugh to the rant of the leading stand up comedian - Mr Aakash Gupta on " +
-                "the Humor Night of Effervescence'18!"
+        val desc_humour = " In a long-standing association with Bingo Comedy Adda, we proudly present you all, with the Man of the Night, Anubhav Singh Bassi. "+
+                "So gear up for the night of 18th October to give yourselves jolts of laughter and tickles of giggles in the Main Auditorium and disregard all your woes and worries as you laugh your hearts out..."
 
-        val desc_local = "Now it’s time to relive and cherish some memories yet again, for Effervescence recreates it back, as we " +
-                "present to you the night which is going to mark the enigma of ultimate fiesta, the one and only, The Local Train. " +
-                "Now as the house is up and the fire within rises, join in for some surreal experiences and invigoration of wonder for the " +
-                "grounds of Effervescence would be waiting for you!"
+        val desc_local = "The Rock Culture is a new herald to a Cultural Festival. Effervescence has witnessed an altogether different level of rock performances in the past, and our next lineup presents our integrity in bringing out a new dimension to Rock Music. Behold, for here comes 'When Chai Met Toast', the Renowned Indian Rock Band bringing together the North and the South."
 
         val pagerAdapter = GlazyFragmentPagerAdapter(childFragmentManager, context)
 
         pagerAdapter.addCardItem(
             GlazyCard()
                 .withTitle("CELEB NIGHT")
-                .withSubTitle("7th October")
+                .withSubTitle("19th October")
                 .withDescription(desc_celeb.toUpperCase())
-                .withImageRes(imgSunidhi)
+                .withImageRes(imgNeeti)
                 .withImageCutType(ImageCutType.WAVE)
                 .withImageCutHeightDP(50)
         )
@@ -70,7 +64,7 @@ class ProshowsFragment : Fragment() {
         pagerAdapter.addCardItem(
             GlazyCard()
                 .withTitle("ROCK NIGHT")
-                .withSubTitle("6th October")
+                .withSubTitle("18th October")
                 .withDescription(desc_local.toUpperCase())
                 .withImageRes(imgRock)
                 .withImageCutType(ImageCutType.ARC)
@@ -81,7 +75,7 @@ class ProshowsFragment : Fragment() {
         pagerAdapter.addCardItem(
             GlazyCard()
                 .withTitle("HUMOUR NIGHT")
-                .withSubTitle("6th October")
+                .withSubTitle("18th October")
                 .withDescription(desc_humour.toUpperCase())
                 .withImageRes(imgHumour)
                 .withImageCutType(ImageCutType.LINE_POSITIVE)
@@ -92,13 +86,21 @@ class ProshowsFragment : Fragment() {
         pagerAdapter.addCardItem(
             GlazyCard()
                 .withTitle("EDM NIGHT")
-                .withSubTitle("5th October")
+                .withSubTitle("17th October")
                 .withDescription(desc_edm.toUpperCase())
                 .withImageRes(imgEDM)
                 .withImageCutType(ImageCutType.WAVE)
                 .withImageCutHeightDP(50)
         )
-
+        pagerAdapter.addCardItem(
+            GlazyCard()
+                .withTitle("KAVYOM")
+                .withSubTitle("17th October")
+                .withDescription(desc_edm.toUpperCase())
+                .withImageRes(imgkavyom)
+                .withImageCutType(ImageCutType.WAVE)
+                .withImageCutHeightDP(50)
+        )
         pager.adapter = pagerAdapter
         pager.pageMargin = Utils.dpToPx(context, 25)
         pager.setPageTransformer(false, GlazyPagerTransformer())
