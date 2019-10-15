@@ -3,12 +3,15 @@ package com.example.android.effe2019
 import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
+import android.content.Context
 import android.content.Intent
 import android.graphics.drawable.Drawable
+import android.net.ConnectivityManager
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.airbnb.lottie.utils.Logger.debug
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.database.*
@@ -17,10 +20,13 @@ import org.jetbrains.anko.startActivity
 import java.io.Serializable
 import com.example.android.effe2019.R
 import com.bumptech.glide.request.target.SimpleTarget
+import org.jetbrains.anko.debug
+import android.net.NetworkInfo
 import androidx.core.content.ContextCompat.getSystemService
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import android.widget.Toast
 import com.esotericsoftware.kryo.util.IntArray
-import android.widget.RelativeLayout
+
 
 
 class SplashActivity : AppCompatActivity(), Serializable {
@@ -153,5 +159,5 @@ class SplashActivity : AppCompatActivity(), Serializable {
             onCancel = { },
             onRepeat = { }))
     }
-
 }
+

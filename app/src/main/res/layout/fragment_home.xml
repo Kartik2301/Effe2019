@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +15,7 @@
         tools:context=".fragments.HomeFragment">
 
         <TextView
-            android:id="@+id/bookmarks_TV"
+            android:id="@+id/upcoming_TV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
@@ -25,14 +25,14 @@
             android:textStyle="bold" />
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/bookmarksRecyclerView"
+            android:id="@+id/updatesRecyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layoutAnimation="@anim/layout_animation_slide_from_right"
             android:overScrollMode="never" />
 
         <TextView
-            android:id="@+id/upcoming_TV"
+            android:id="@+id/updates_TV"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
@@ -44,11 +44,11 @@
 
         <ListView
             android:id="@+id/list"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:divider="@android:color/transparent"
             android:dividerHeight="8dp"
             android:padding="8dp"
             android:scrollbars="none" />
     </LinearLayout>
-</androidx.core.widget.NestedScrollView>
+</FrameLayout>

@@ -27,7 +27,7 @@ class LaunchActivity : AppCompatActivity() {
         val eventsArrayList = bundle.getParcelableArrayList<DataForEvents>("EVENTS")
 
         var fr: Fragment
-        fr = HomeFragment(updatesArrayList)
+        fr = HomeFragment(updatesArrayList, eventsArrayList!!)
         val fm = supportFragmentManager
         var fragmentTransaction = fm.beginTransaction()
         var replace = fragmentTransaction.replace(R.id.container2, fr)
@@ -37,7 +37,7 @@ class LaunchActivity : AppCompatActivity() {
 
         bubbleNavigationLinearView.setNavigationChangeListener { view, position ->
             fr = if (position == 0) {
-                HomeFragment(updatesArrayList)
+                HomeFragment(updatesArrayList, eventsArrayList!!)
             } else if (position == 1) {
                 TestFragment(eventsArrayList)
             } else if (position == 2) {

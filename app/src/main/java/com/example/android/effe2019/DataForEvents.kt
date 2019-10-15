@@ -17,7 +17,7 @@ class DataForEvents(
     var name: String? = null,
     var organizers: List<DataForOrganizers>? = null,
     var time: String? = null,
-    var timestamp: Long? = null
+    var timestamp: Long = 0
 ) : Parcelable {
     constructor(source: Parcel) : this(
         source.readString(),
@@ -30,7 +30,7 @@ class DataForEvents(
         source.readString(),
         source.createTypedArrayList(DataForOrganizers.CREATOR),
         source.readString(),
-        source.readValue(Long::class.java.classLoader) as Long?
+        source.readValue(Long::class.java.classLoader) as Long
     )
 
     constructor() : this(
