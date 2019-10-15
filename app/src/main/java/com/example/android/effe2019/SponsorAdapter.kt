@@ -47,11 +47,11 @@ class SponsorAdapter(
         }
         val ch = ','
         role.text = str
-        val requestOptions = RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL)
+        val requestOption = RequestOptions().placeholder(R.drawable.placeholder_event)
 
         Glide.with(imageView.context)
             .load(task.imageUrl)
-            .apply(requestOptions)
+            .apply(requestOption)
             .into(imageView)
         /*new DownloadImageTask(imageView)
         .execute(task.getUrlofSponsor());*/

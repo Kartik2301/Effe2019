@@ -16,6 +16,7 @@ import android.widget.ImageView
 import android.widget.TextView
 
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 
 class TeamAdapter(
     private val context: Activity, //list of users
@@ -46,8 +47,11 @@ class TeamAdapter(
             context.startActivity(callIntent)
         }
         role.text = task.position
+        val requestOption = RequestOptions().placeholder(R.drawable.placeholder_event)
+
         Glide.with(imageView.context)
             .load(task.imageUrl)
+            .apply(requestOption)
             .into(imageView)
         //        if(position == 0){
         //            CardView cv = (CardView) convertView.findViewById(R.id.card);
