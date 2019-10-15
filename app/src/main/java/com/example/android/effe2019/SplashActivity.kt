@@ -4,13 +4,23 @@ import android.animation.Animator
 import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.content.Intent
+import android.graphics.drawable.Drawable
+import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.transition.Transition
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.activity_splash.*
 import org.jetbrains.anko.startActivity
 import java.io.Serializable
+import com.example.android.effe2019.R
+import com.bumptech.glide.request.target.SimpleTarget
+import androidx.core.content.ContextCompat.getSystemService
+import android.icu.lang.UCharacter.GraphemeClusterBreak.T
+import com.esotericsoftware.kryo.util.IntArray
+import android.widget.RelativeLayout
 
 
 class SplashActivity : AppCompatActivity(), Serializable {
@@ -23,6 +33,17 @@ class SplashActivity : AppCompatActivity(), Serializable {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        GlideApp.with(this).load(R.drawable.background_splash3)
+            .into(object : SimpleTarget<Drawable>() {
+                override fun onResourceReady(
+                    resource: Drawable,
+                    transition: Transition<in Drawable>?
+                ) {
+                    this@SplashActivity.relative_layout.background = resource
+                }
+            })
+
         startLogoAnimation()
         firebaseDatabaseReference = FirebaseDatabase.getInstance().reference
         updates = ArrayList()

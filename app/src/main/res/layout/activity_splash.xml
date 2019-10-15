@@ -5,8 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_splash3"
-    tools:context="com.example.android.effe2019.SplashActivity">
+    tools:context="com.example.android.effe2019.SplashActivity"
+    android:id="@+id/relative_layout">
 
     <ImageView
         android:id="@+id/effeLogoIV"
@@ -30,7 +30,6 @@
         android:maxHeight="200dp" />
 
     <com.github.ybq.android.spinkit.SpinKitView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/spin_kit"
         style="@style/SpinKitView.Large.MultiplePulseRing"
         android:layout_width="match_parent"

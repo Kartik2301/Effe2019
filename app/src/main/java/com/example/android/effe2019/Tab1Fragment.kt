@@ -39,7 +39,7 @@ class Tab1Fragment(val team: ArrayList<DataForTeam>?) : Fragment() {
     }
     override fun onStart() {
         super.onStart()
-        val teamAdapter = activity?.let { TeamAdapter(it, team) }
+        val teamAdapter: TeamAdapter? = activity?.let { TeamAdapter(it, team) }
         listViewUsers?.adapter = teamAdapter
 
     }
