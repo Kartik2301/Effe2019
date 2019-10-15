@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import android.widget.ListView
 import android.widget.TextView
 
 import androidx.fragment.app.Fragment
@@ -30,6 +31,7 @@ import io.reactivex.schedulers.Schedulers
 
 class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
     internal lateinit var rootView: View
+    private var listViewupdates: ListView? = null
     lateinit var parent: Array<String>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -74,27 +76,37 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
             var i = 0
             var check = 0
             var mark = 0
-                val innerData = ArrayList<InnerData>()
-            val innerData1 = ArrayList<InnerData>()
+            val innerDataforInformal = ArrayList<InnerData>()
+            val innerDataforMusic = ArrayList<InnerData>()
+            val innerDataforGaming = ArrayList<InnerData>()
+            val innerDataforDance = ArrayList<InnerData>()
+            val innerDataforDrama = ArrayList<InnerData>()
+            val innerDataforLiterature = ArrayList<InnerData>()
+            val innerDataforFineArts = ArrayList<InnerData>()
+            val innerDataforMainStage = ArrayList<InnerData>()
 
             var j = 0
                 while (j < events!!.size && !e.isDisposed) {
-                    if(events!!.get(j).categories.toString().equals("music")){
-                        check = 1
-                        innerData.add(createInnerData(4, events!!.get(j)))
-                    }
-                    if(events!!.get(j).categories.toString().equals("informal")){
-                        mark = 1
-                        innerData1.add(createInnerData(8, events!!.get(j)))
+                    when(events!!.get(j).categories.toString()){
+                        "informal" -> innerDataforInformal.add(createInnerData(8, events!!.get(j)))
+                        "music" -> innerDataforMusic.add(createInnerData(2, events!!.get(j)))
+                        "gaming" -> innerDataforGaming.add(createInnerData(7, events!!.get(j)))
+                        "dance" -> innerDataforDance.add(createInnerData(3, events!!.get(j)))
+                        "dramatics" -> innerDataforDrama.add(createInnerData(1, events!!.get(j)))
+                        "literature" -> innerDataforLiterature.add(createInnerData(6, events!!.get(j)))
+                        "fine arts" -> innerDataforFineArts.add(createInnerData(4, events!!.get(j)))
+                        "main stage" -> innerDataforMainStage.add(createInnerData(0, events!!.get(j)))
                     }
                     j++
                 }
-            if(check == 1){
-                outerData.add(innerData)
-            }
-            if(mark == 1){
-                outerData.add(innerData1)
-            }
+                outerData.add(innerDataforMainStage)
+                outerData.add(innerDataforDrama)
+                outerData.add(innerDataforMusic)
+                outerData.add(innerDataforDance)
+                outerData.add(innerDataforFineArts)
+                outerData.add(innerDataforLiterature)
+                outerData.add(innerDataforGaming)
+                outerData.add(innerDataforInformal)
 
             if (!e.isDisposed) {
                 e.onSuccess(outerData)
@@ -118,14 +130,15 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
 
     private fun createInnerData(i: Int, get: DataForEvents): InnerData {
         return InnerData(
-            "Informal",
+            get.categories.toString(),
             get.name!!,
             get.location!!,
-            "6:00 pm",
-            "Important Event",
+            get.time!!,
+            get.description!!,
             get.imageUrl!!,
             parent[i],
-            "6 October"
+            get.date!!,
+            get.organizers
         )
     }
 
@@ -145,11 +158,17 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
         name = myview.findViewById(R.id.name)
         date = myview.findViewById(R.id.date)
         image = myview.findViewById(R.id.imageView)
+        description = myview.findViewById(R.id.profession)
         name.text = itemData.title
         date.text = itemData.date
+        val organizers: ArrayList<DataForOrganizers> = itemData.organizers as ArrayList<DataForOrganizers>
         Glide.with(image.context)
             .load(itemData.Url)
             .into(image)
+        listViewupdates = myview.findViewById(R.id.list) as ListView
+        val userAdapter: OrganizerAdapter = activity?.let { OrganizerAdapter(it, organizers) }!!
+        listViewupdates!!.adapter = userAdapter
+        description.text = itemData.description
         myDialog.setView(myview)
         val dialog: AlertDialog = myDialog.create();
         dialog.show()

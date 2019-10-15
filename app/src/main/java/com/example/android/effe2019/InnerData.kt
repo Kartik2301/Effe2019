@@ -8,6 +8,8 @@ class InnerData(
     val description: String,
     val Url: String,
     val ParentUrl: String,
-    val date: String
+    val date: String,
+    var organizers: List<DataForOrganizers>? = null
+
 )
 
