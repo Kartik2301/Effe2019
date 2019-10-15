@@ -96,7 +96,7 @@ class ProshowsFragment : Fragment() {
             GlazyCard()
                 .withTitle("KAVYOM")
                 .withSubTitle("17th October")
-                .withDescription(desc_edm.toUpperCase())
+                .withDescription(desc_kavyom.toUpperCase())
                 .withImageRes(imgkavyom)
                 .withImageCutType(ImageCutType.WAVE)
                 .withImageCutHeightDP(50)
