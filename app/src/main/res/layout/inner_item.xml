@@ -48,7 +48,7 @@
 
                 <ImageView
                     android:id="@+id/avatar"
-                    android:src="@drawable/icon"
+                    android:src="@drawable/placeholder_event"
                     android:layout_margin="@dimen/item_avatar_border"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
