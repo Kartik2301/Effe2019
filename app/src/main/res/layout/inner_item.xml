@@ -76,7 +76,7 @@
                     android:text="date"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:maxLines="1"
+                    android:maxLines="2"
                     android:ellipsize="end"
                     android:textSize="@dimen/item_name_text_size"
                     android:textColor="@color/item_name_color"/>

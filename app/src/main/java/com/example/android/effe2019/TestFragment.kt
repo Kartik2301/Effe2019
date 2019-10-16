@@ -84,7 +84,7 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
             val innerDataforLiterature = ArrayList<InnerData>()
             val innerDataforFineArts = ArrayList<InnerData>()
             val innerDataforMainStage = ArrayList<InnerData>()
-
+            val innerDataforAMS = ArrayList<InnerData>()
             var j = 0
                 while (j < events!!.size && !e.isDisposed) {
                     when(events!!.get(j).categories.toString()){
@@ -96,6 +96,7 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
                         "literature" -> innerDataforLiterature.add(createInnerData(6, events!!.get(j)))
                         "fine arts" -> innerDataforFineArts.add(createInnerData(4, events!!.get(j)))
                         "main stage" -> innerDataforMainStage.add(createInnerData(0, events!!.get(j)))
+                        "AMS" -> innerDataforAMS.add(createInnerData(5, events!!.get(j)))
                     }
                     j++
                 }
@@ -104,6 +105,7 @@ class TestFragment(var events: ArrayList<DataForEvents>?) : Fragment() {
                 outerData.add(innerDataforMusic)
                 outerData.add(innerDataforDance)
                 outerData.add(innerDataforFineArts)
+                outerData.add(innerDataforAMS)
                 outerData.add(innerDataforLiterature)
                 outerData.add(innerDataforGaming)
                 outerData.add(innerDataforInformal)
